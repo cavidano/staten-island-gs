@@ -156,19 +156,19 @@
         <main id="skip-header-content">
 
              <div class="theme-secondary padding-4">
-                 <div class="container text-align-center">
+                 <div class="container text-align-right">
                      <h1>Meetings on the Island</h1>
                  </div>
              </div>
 
             <section id="map-columns" class="theme-light">
 
-                <div class="theme-white padding-2" id="sidebar">
+                <div class="theme-white pad" id="sidebar">
                     cool
                 </div>
 
                 <div id="map">
-                    <div id="mapid"></div>
+                    <div id="map-meetings"></div>
                 </div>
 
             </section>
@@ -285,47 +285,32 @@
         <script src="https://cdn.jsdelivr.net/gh/CityOfNewYork/nyc-core-framework@new-version/dist/js/nyc_core.js"></script>
 
         <!-- Make sure you put this AFTER Leaflet's CSS -->
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin="">
-        </script>
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+        
+        <script src="./lib/js/leaflet-providers.js"></script>
 
-        <script>
-            var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+        <script defer>
 
-            L.tileLayer(
-                'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                    maxZoom: 18,
-                    
-                    id: 'mapbox/streets-v11',
-                    tileSize: 512,
-                    zoomOffset: -1
-                }).addTo(mymap);
+            var map = L.map('map-meetings', {
+                center: [40.5795, -74.1502],
+                zoom: 13,
+                minZoom: 10,
+                maxZoom: 15,
+                zoomSnap: 0.25,
+                zoomDelta: 0.5,
+                scrollWheelZoom: false,
+                attributionControl: false,
+                zoomControl: false,
+            });
 
-            L.marker([51.5, -0.09]).addTo(mymap)
-                .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+            L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
 
-            L.circle([51.508, -0.11], 500, {
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5
-            }).addTo(mymap).bindPopup("I am a circle.");
+            L.control.zoom({
+                position: 'topright',
+                zoomInText: '<span class="fas fa-plus"></span>',
+                zoomOutText: '<span class="fas fa-minus"></span>',
+            }).addTo(map);
 
-            L.polygon([
-                [51.509, -0.08],
-                [51.503, -0.06],
-                [51.51, -0.047]
-            ]).addTo(mymap).bindPopup("I am a polygon.");
-
-
-            var popup = L.popup();
-
-            function onMapClick(e) {
-                popup
-                    .setLatLng(e.latlng)
-                    .setContent("You clicked the map at " + e.latlng.toString())
-                    .openOn(mymap);
-            }
-
-            mymap.on('click', onMapClick);
         </script>
 
     </body>

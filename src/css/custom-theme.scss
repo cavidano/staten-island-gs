@@ -47,14 +47,25 @@ p:not([class]) {
     }
     
     @include breakpoints-up(lg){
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 350px 1fr;
         grid-template-areas: 
             "sidebar map";
     }
 
 }
 
- #mapid { height: 100%; width:100% }
+a[class*="leaflet-control-zoom"],
+a[class*="leaflet-control-zoom"]:hover,
+a[class*="leaflet-control-zoom"]:focus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--btn--icon-only-size);
+    height: var(--btn--icon-only-size);
+    text-decoration: none;
+}
+
+ #map-meetings { height: 100%; width:100% }
 
 
 svg.current-color{
