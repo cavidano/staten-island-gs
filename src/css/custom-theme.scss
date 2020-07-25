@@ -1,0 +1,47 @@
+:root{
+    --base-font-family: 'EB Garamond', serif;
+    --base-font-size: 20px;
+    --primary: #1f4fae;
+    --secondary: #00a896;
+    --dark: hsl(215, 60%, 15%);
+    --light: #F7F8F9;
+
+    --border-radius: 0.5em;
+}
+
+.sans, 
+.btn:not([class*="--icon"]), 
+h1, .h1, 
+h2, .h2, 
+h3 .h3, 
+h4, .h4, 
+h5, .h5, 
+h6, .h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+svg.current-color{
+    fill: currentColor;
+}
+
+.wrap-triangle {
+    --my-size: 100px;
+    --my-padding: var(--s2);
+
+    --my-real-size: calc( var(--my-size) + var(--my-padding));
+
+    background-color: var(--primary);
+    padding: var(--s1);
+    border-radius: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top: calc( var(--my-real-size) / 2 * -1);
+    width: var(--my-real-size);
+    height: var(--my-real-size);;
+}
+
+footer{
+    padding-top: 0.1px;
+}

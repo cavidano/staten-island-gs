@@ -4,7 +4,7 @@
 
   		"liveSassCompile.settings.includeItems": [
 			// Main SASS file is location
-			"src/scss/carl-avidano-theme.scss"
+			"src/css/custom-theme.scss"
   		],
 
   		"liveSassCompile.settings.formats": [
@@ -20,7 +20,7 @@
   			"> 1%",
   			"IE 10"
 		],
-		"liveServer.settings.port": 5501,
+		"liveServer.settings.port": 5502,
   	},
 
   	"folders": [
