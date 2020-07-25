@@ -22,6 +22,8 @@
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+
         <!-- Font Awesome Kit -->
         <script data-search-pseudo-elements defer src="https://kit.fontawesome.com/d0e9d4ccb2.js" crossorigin="anonymous"></script>
 
@@ -115,8 +117,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="meetings.html">
+                    <li class="theme-secondary">
+                        <a href="#1" aria-current="page">
                             <strong>Meetings</strong>
                         </a>
                     </li>
@@ -153,294 +155,22 @@
 
         <main id="skip-header-content">
 
-            <section class="theme-primary">
+             <div class="theme-secondary padding-4">
+                 <div class="container text-align-center">
+                     <h1>Meetings on the Island</h1>
+                 </div>
+             </div>
 
-                <div class="container medium text-align-center margin-y-5">
+            <section id="map-columns" class="theme-light">
 
-                    <h1 class="banner-headline">
-                        Get Help Now
-                    </h1>
-
-                    <div class="margin-y-4">
-
-                        <div class="grid grid--gap-3 grid--cells-fill--md justify-content-center">
-
-                            <div class="grid__cell">
-
-                                <div class="card theme-white rounded box-shadow-3">
-
-                                    <div class="card__body">
-                                        <h2 class="h5">Time to Quit?</h2>
-                                        <p>
-                                            If you can't stop drinking and need support, you are not alone. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </p>
-                                    </div>
-
-                                    <div class="card__foot border-top">
-                                        <a class="btn theme-secondary display-block rounded" href="#1">Find A Meeting</a>
-                                    </div>
-
-                                </div>
-                                <!-- .card -->
-
-                            </div>
-                            <!-- .grid__cell -->
-
-                            <div class="grid__cell">
-                            
-                                <div class="card theme-white rounded box-shadow-3">
-                            
-                                    <div class="card__body">
-                                        <h2 class="h5">What is AA?</h2>
-                                        <p>
-                                            If you can't stop drinking and need help, you are not alone. Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit.
-                                        </p>
-                                    </div>
-                            
-                                    <div class="card__foot border-top">
-                                        <a class="btn theme-secondary display-block rounded" href="#1">Learn About AA</a>
-                                    </div>
-                                </div>
-                                <!-- .card -->
-                            
-                            </div>
-                            <!-- .grid__cell -->
-
-                        </div>
-                        <!-- .grid -->
-
-                    </div>
-
+                <div class="theme-white padding-2" id="sidebar">
+                    cool
                 </div>
-                <!-- .container -->
 
-            </section>
-            <!-- backdrop -->
-
-            <section class="theme-light">
-
-                <div class="container narrow medium--md text-align-center margin-y-5">
-
-                    <h2>
-                       Monday's Meetings
-                    </h2>
-                
-                    <div class="text-align-left margin-y-4">
-                
-                        <div class="grid grid--gap-2 grid--cells-6--md grid--cells-4--lg">
-                
-                            <div class="grid__cell">
-                
-                                <div class="card theme-white rounded box-shadow-1">
-
-                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
-                                      <strong class="sans text-primary">7:00 pm</strong>
-                                      <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
-                                    </div>
-                
-                                    <div class="card__body">
-                                        <h2 class="h6">Friends of Bill W.</h2>
-                                        <p>
-                                            1331 Bay St<br>
-                                            Staten Island, NY 10305
-                                        </p>
-                                    </div>
-                
-                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
-                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
-                                    </div>
-
-                                </div>
-                                <!-- .card -->
-                
-                            </div>
-                            <!-- .grid__cell -->
-
-                            <div class="grid__cell">
-                            
-                                <div class="card theme-white rounded box-shadow-1">
-                            
-                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
-                                        <strong class="sans text-primary">7:00 pm</strong>
-                                        <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
-                                    </div>
-                            
-                                    <div class="card__body">
-                                        <h2 class="h6">Friends of Bill W.</h2>
-                                        <p>
-                                            1331 Bay St<br>
-                                            Staten Island, NY 10305
-                                        </p>
-                                    </div>
-                            
-                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
-                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
-                                    </div>
-
-                                </div>
-                                <!-- .card -->
-                            
-                            </div>
-                            <!-- .grid__cell -->
-
-                            <div class="grid__cell">
-                            
-                                <div class="card theme-white rounded box-shadow-1">
-                            
-                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
-                                        <strong class="sans text-primary">7:00 pm</strong>
-                                        <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
-                                    </div>
-                            
-                                    <div class="card__body">
-                                        <h2 class="h6">Friends of Bill W.</h2>
-                                        <p>
-                                            1331 Bay St<br>
-                                            Staten Island, NY 10305
-                                        </p>
-                                    </div>
-                            
-                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
-                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- .card -->
-                            
-                            </div>
-                            <!-- .grid__cell -->
-
-                            <div class="grid__cell">
-                            
-                                <div class="card theme-white rounded box-shadow-1">
-                            
-                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
-                                        <strong class="sans text-primary">7:00 pm</strong>
-                                        <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
-                                    </div>
-                            
-                                    <div class="card__body">
-                                        <h2 class="h6">Friends of Bill W.</h2>
-                                        <p>
-                                            1331 Bay St<br>
-                                            Staten Island, NY 10305
-                                        </p>
-                                    </div>
-                            
-                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
-                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- .card -->
-                            
-                            </div>
-                            <!-- .grid__cell -->
-
-                            <div class="grid__cell">
-                            
-                                <div class="card theme-white rounded box-shadow-1">
-                            
-                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
-                                        <strong class="sans text-primary">7:00 pm</strong>
-                                        <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
-                                    </div>
-                            
-                                    <div class="card__body">
-                                        <h2 class="h6">Friends of Bill W.</h2>
-                                        <p>
-                                            1331 Bay St<br>
-                                            Staten Island, NY 10305
-                                        </p>
-                                    </div>
-                            
-                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
-                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
-                                    </div>
-
-                                </div>
-                                <!-- .card -->
-                            
-                            </div>
-                            <!-- .grid__cell -->
-
-                            <div class="grid__cell">
-                            
-                                <div class="card theme-white rounded box-shadow-1">
-                            
-                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
-                                        <strong class="sans text-primary">7:00 pm</strong>
-                                        <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
-                                    </div>
-                            
-                                    <div class="card__body">
-                                        <h2 class="h6">Friends of Bill W.</h2>
-                                        <p>
-                                            1331 Bay St<br>
-                                            Staten Island, NY 10305
-                                        </p>
-                                    </div>
-                            
-                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
-                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
-                                    </div>
-
-                                </div>
-                                <!-- .card -->
-                            
-                            </div>
-                            <!-- .grid__cell -->
-                
-                        </div>
-                        <!-- .grid -->
-                
-                    </div>
-
-                    <a class="btn theme-dark rounded" href="#1">All Meetings</a>
-                
+                <div id="map">
+                    <div id="mapid"></div>
                 </div>
-                <!-- .container -->
 
-            </section>
-
-            <section class="">
-            
-                <div class="container medium text-align-center margin-y-5">
-
-                    <h2>
-                        Our Mission
-                    </h2>
-            
-                    <div class="text-align-left font-size-lg margin-y-3">
-            
-                        <div class="grid grid--gap-3 grid--cells-6--md">
-            
-                            <div class="grid__cell">
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia esse tempora nobis quam molestiae culpa, totam enim
-                                    saepe adipisci sint nihil voluptatum perspiciatis in possimus illum reiciendis.
-                                </p>
-                            </div>
-                            <!-- .grid__cell -->
-            
-                            <div class="grid__cell">
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia esse tempora nobis quam
-                                    molestiae culpa, totam enim saepe adipisci sint nihil voluptatum perspiciatis in
-                                    possimus illum reiciendis.
-                                </p>
-                            </div>
-                            <!-- .grid__cell -->
-            
-                        </div>
-                        <!-- .grid -->
-            
-                    </div>
-            
-                </div>
-                <!-- .container -->
-            
             </section>
 
         </main>
@@ -553,6 +283,50 @@
 
         <!-- NYC Core Javascript -->
         <script src="https://cdn.jsdelivr.net/gh/CityOfNewYork/nyc-core-framework@new-version/dist/js/nyc_core.js"></script>
+
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin="">
+        </script>
+
+        <script>
+            var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+            L.tileLayer(
+                'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                    maxZoom: 18,
+                    
+                    id: 'mapbox/streets-v11',
+                    tileSize: 512,
+                    zoomOffset: -1
+                }).addTo(mymap);
+
+            L.marker([51.5, -0.09]).addTo(mymap)
+                .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+
+            L.circle([51.508, -0.11], 500, {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5
+            }).addTo(mymap).bindPopup("I am a circle.");
+
+            L.polygon([
+                [51.509, -0.08],
+                [51.503, -0.06],
+                [51.51, -0.047]
+            ]).addTo(mymap).bindPopup("I am a polygon.");
+
+
+            var popup = L.popup();
+
+            function onMapClick(e) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent("You clicked the map at " + e.latlng.toString())
+                    .openOn(mymap);
+            }
+
+            mymap.on('click', onMapClick);
+        </script>
 
     </body>
 
