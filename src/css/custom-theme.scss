@@ -47,7 +47,7 @@ p:not([class]) {
     }
     
     @include breakpoints-up(lg){
-    grid-template-columns: 350px 1fr;
+        grid-template-columns: 350px 1fr;
         grid-template-areas: 
             "sidebar map";
     }
