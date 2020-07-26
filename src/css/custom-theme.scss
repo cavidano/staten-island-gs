@@ -91,12 +91,44 @@ p:not([class]) {
 
         grid-template-columns: 1fr 0;
 
-        &.sidebar-show{
+        &.sidebar-shown{
             grid-template-columns: 1fr var(--map-max-size);
         }
 
     }
 
+}
+
+
+.leaflet-popup-tip,
+.leaflet-popup-content-wrapper{
+    box-shadow: unset;
+    background-color: rgba( #ffffff, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.leaflet-popup-content-wrapper{
+    border-radius: calc( var(--border-radius) * 1) ;
+    box-shadow: 0 0 1em rgba( #000000, 0.125);
+    
+}
+
+.leaflet-popup-content{
+    color: var(--dark);
+    margin: calc( var(--s1) * 0.75) var(--s1);
+
+    > h6 {
+        font-size: var(--font-size-sm);
+        margin-bottom: unset;
+    }
+
+    > p {
+        display: none;
+    }
+}
+
+.leaflet-popup-close-button{
+    display: none;
 }
 
 a[class*="leaflet-control-zoom"],

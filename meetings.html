@@ -322,8 +322,13 @@
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
         
         <script src="./lib/js/leaflet-providers.js"></script>
+        <script src="https://unpkg.com/leaflet.smooth_marker_bouncing@1.3.0/leaflet.smoothmarkerbouncing.js"></script>
 
         <script defer>
+
+            const mapColumns = document.getElementById("map-columns");
+
+            let sidebarShown = false;
 
             //////////////////////////////////////////////
             // A. Create Map
@@ -369,20 +374,84 @@
                 icon: Icon
             };
 
-            var meetingOpen = new Icon({ iconUrl: myPath + '/images/map-pin-open.svg'} );
-            var meetingClosed = new Icon({ iconUrl: myPath + '/images/map-pin-closed.svg'} );
+            var openMeeting = new Icon({ iconUrl: myPath + '/images/map-pin-open.svg'} );
+            var closedMeeting = new Icon({ iconUrl: myPath + '/images/map-pin-closed.svg'} );
 
-            L.marker([40.629740, -74.116100], { icon: meetingClosed }).bindPopup("I am a green leaf.").addTo(map);
+            // Cool!
 
-            L.marker([40.628910, -74.114570], { icon: meetingOpen }).bindPopup("I am a red leaf.").addTo(map);
+            markerLayer = L.layerGroup([]).addTo(map);
 
-            L.marker([40.545310, -74.165400], { icon: meetingOpen }).bindPopup("I am an orange leaf.").addTo(map);
+            function createMarker(
+                coords, 
+                meetingType,
+                meetingTitle, 
+                meetingAddress
+            ) {
+                
+                var content = '<h6>' + meetingTitle + '</h6>' + '<p>' + meetingAddress + '</p>';
+                
+                var marker = L.marker(coords, { icon: meetingType }).addTo(markerLayer);
+                
+                marker.bindPopup(content);
+
+                marker.on('click', function (evt) {
+
+                    if( sidebarShown === false){
+                        mapColumns.classList.add('sidebar-shown');
+                        sidebarShown = true;
+                    }
+
+                    var id = L.Util.stamp(evt.target);
+
+                    if (document.getElementById(id) != null) return;
+
+                    var sidebarElement, infoPart, removePart;
+
+                    sidebarElement = L.DomUtil.create('div', 'sidebarElement', document.getElementById('sidebar'));
+                    sidebarElement.id = id;
+                    
+                    infoPart = L.DomUtil.create('div', 'infoSidebarElement padding-2', sidebarElement);
+                    infoPart.innerHTML = content;
+                    
+                    L.DomEvent.on(infoPart, 'click', function (evt) {
+                        var marker = markerLayer.getLayer(this.id);
+                        marker.closePopup();
+                        map.panTo(marker.getLatLng());
+                        marker.bounce(3);
+                    }, sidebarElement);
+                    
+                    removePart = L.DomUtil.create('div', 'removeSidebarElement', sidebarElement);
+                    
+                    removePart.innerHTML = 'Remove';
+                    
+                    L.DomEvent.on(removePart, 'click', function (evt) {
+                        markerLayer.getLayer(this.id).closePopup();
+                        this.parentNode.removeChild(this);
+                    }, sidebarElement);
+                });
+            }
+
+            createMarker(
+                [40.641310, -74.075930],
+                openMeeting, 
+                "The Crossroads",
+                "26 Bay St,<br>Staten Island, NY<br>10301"
+            );
+
+            createMarker(
+                [40.628910, -74.114570],
+                closedMeeting, 
+                "Carl's House",
+                "471 Broadway,<br>Staten Island, NY<br>10301"
+            );
+
+            //var bounds = addedGeoJSON.getBounds();
+            //map.fitBounds(bounds, { padding: [0, 0] });
 
             //////////////////////////////////////////////
             // B. Map Height
             //////////////////////////////////////////////
             
-            const mapColumns = document.getElementById("map-columns");
 
             function setMapHeight() {
                 const windowHeight = window.innerHeight;
@@ -403,7 +472,15 @@
             const toggleColButton = document.querySelector('[data-toggle-column]');
 
             toggleColButton.addEventListener('click', event => {
-                mapColumns.classList.toggle("sidebar-show");
+
+                if( sidebarShown === false){
+                    mapColumns.classList.add("sidebar-shown");
+                    sidebarShown = true;
+                } else if ( sidebarShown === true) {
+                    mapColumns.classList.remove("sidebar-shown");
+                    sidebarShown = false;
+                }
+
                 //map.setView([40.5795, -74.1502], 13), 1000;
             });
 
