@@ -31,25 +31,30 @@ p:not([class]) {
 }
 
 #map-columns{
+    --map-max-size: 350px; 
     display: grid;
     height: 100vh;
 
+    grid-template-rows: var(--map-max-size) 1fr;
     grid-template-areas: 
-        "sidebar"
-        "map";
-
-    #sidebar{
-        grid-area: 'sidebar';
-    }
+        "map"
+        "sidebar";
 
     #map{
         grid-area: 'map';
+        height: 100%;
+    }
+
+    #sidebar{
+        grid-area: 'sidebar';
+        z-index: 25000;
     }
     
-    @include breakpoints-up(lg){
-        grid-template-columns: 350px 1fr;
+    @include breakpoints-up(lg) {
+        grid-template-rows: unset;
+        grid-template-columns: 1fr var(--map-max-size);
         grid-template-areas: 
-            "sidebar map";
+            "map sidebar";
     }
 
 }
