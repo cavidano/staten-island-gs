@@ -384,47 +384,64 @@
             function createMarker(
                 coords, 
                 meetingType,
-                meetingTitle, 
+                meetingTitle,
                 meetingAddress
             ) {
-                
-                var content = '<h6>' + meetingTitle + '</h6>' + '<p>' + meetingAddress + '</p>';
+
+                if( meetingType === closedMeeting ){
+                    meeting = 'Closed';
+                } else if(meetingType === openMeeting) {
+                    meeting = 'Open';
+                }
+
+                var contentPopUp = '<strong>' + meetingTitle + '</strong>';
+
+                var contentSidebar = '<p class="meeting__title">' + meetingTitle + '</p>' +
+                                     '<p class="meeting__type-' + meeting.toLowerCase() + '">' + meeting + ' Discussion' + '</p>' +
+                                     '<p class="meeting__address">' + meetingAddress + '</p>';
                 
                 var marker = L.marker(coords, { icon: meetingType }).addTo(markerLayer);
                 
-                marker.bindPopup(content);
+                marker.bindPopup(contentPopUp);
 
-                marker.on('click', function (evt) {
+                marker.on('click', function (event) {
 
                     if( sidebarShown === false){
                         mapColumns.classList.add('sidebar-shown');
                         sidebarShown = true;
                     }
 
-                    var id = L.Util.stamp(evt.target);
+                    var id = L.Util.stamp(event.target);
 
                     if (document.getElementById(id) != null) return;
 
-                    var sidebarElement, infoPart, removePart;
-
-                    sidebarElement = L.DomUtil.create('div', 'sidebarElement', document.getElementById('sidebar'));
+                    var sidebarElement = L.DomUtil.create('div', 'sidebarElement', document.getElementById('sidebar'));
                     sidebarElement.id = id;
                     
-                    infoPart = L.DomUtil.create('div', 'infoSidebarElement padding-2', sidebarElement);
-                    infoPart.innerHTML = content;
+                    var meetingDetail = L.DomUtil.create('div', 'meeting-detail border-bottom', sidebarElement);
+                    meetingDetail.innerHTML = contentSidebar;
                     
-                    L.DomEvent.on(infoPart, 'click', function (evt) {
-                        var marker = markerLayer.getLayer(this.id);
-                        marker.closePopup();
-                        map.panTo(marker.getLatLng());
-                        marker.bounce(3);
+                    meetingDetail.setAttribute("tabindex", 0);
+                    
+                    L.DomEvent.on( meetingDetail, 'click', function (event) {
+
+                        if( event.target.classList.contains('btn')) {
+                            event.preventDefault();
+                        } else {
+                            var marker = markerLayer.getLayer(this.id);
+                            marker.closePopup();
+                            map.panTo(marker.getLatLng());
+                            marker.bounce(2);
+                        }
+
                     }, sidebarElement);
                     
-                    removePart = L.DomUtil.create('div', 'removeSidebarElement', sidebarElement);
+                    var removePart = L.DomUtil.create('button', 'btn btn--icon-only', meetingDetail);
                     
-                    removePart.innerHTML = 'Remove';
+                    removePart.innerHTML = '<span class="screen-reader-only">Remove</span>' +
+                                           '<span class="fas fa-times btn__icon"></span>';
                     
-                    L.DomEvent.on(removePart, 'click', function (evt) {
+                    L.DomEvent.on(removePart, 'click', function (event) {
                         markerLayer.getLayer(this.id).closePopup();
                         this.parentNode.removeChild(this);
                     }, sidebarElement);
