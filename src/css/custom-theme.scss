@@ -46,6 +46,11 @@ In this file:
     font-family:'EB Garamond', serif;
 }
 
+.blur-background{
+    background-color: rgba( #ffffff, 0.5);
+    backdrop-filter: blur(0.24rem);
+}
+
 p:not([class]) {
     @extend %serif !optional;
 }
@@ -60,7 +65,7 @@ p:not([class]) {
 // D. Map
 //////////////////////////////////////////////
 
-#map-columns{
+#map-columns {
     --map-max-size: 350px; 
     display: grid;
     height: 100vh;
@@ -71,12 +76,12 @@ p:not([class]) {
 
     grid-template-rows: var(--map-max-size) 1fr;
 
-    #map{
+    #map {
         grid-area: 'map';
         height: 100%;
     }
 
-    #sidebar{
+    #sidebar {
         grid-area: 'sidebar';
         z-index: 25000;
         position: relative;
@@ -105,19 +110,19 @@ p:not([class]) {
 
 
 .leaflet-popup-tip,
-.leaflet-popup-content-wrapper{
+.leaflet-popup-content-wrapper {
     box-shadow: unset;
     background-color: rgba( #ffffff, 0.5);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(0.24rem);
 }
 
-.leaflet-popup-content-wrapper{
+.leaflet-popup-content-wrapper {
     border-radius: calc( var(--border-radius) * 1) ;
     box-shadow: 0 0 1em rgba( #000000, 0.125);
     
 }
 
-.leaflet-popup-content{
+.leaflet-popup-content {
     color: var(--dark);
     margin: calc( var(--s1) * 0.75) var(--s1);
 
@@ -137,7 +142,7 @@ p:not([class]) {
 
 a[class*="leaflet-control-zoom"],
 a[class*="leaflet-control-zoom"]:hover,
-a[class*="leaflet-control-zoom"]:focus{
+a[class*="leaflet-control-zoom"]:focus {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -146,13 +151,12 @@ a[class*="leaflet-control-zoom"]:focus{
     text-decoration: none;
 }
 
-
-.meeting-detail{
+.meeting-detail {
     position: relative;
     padding: var(--s2);
     cursor: pointer;
 
-    > button{
+    > button {
         position: absolute;
         top: var(--s1);
         right: var(--s1);
@@ -191,16 +195,28 @@ a[class*="leaflet-control-zoom"]:focus{
     .meeting__type-open::before {
         mask-image: url("../../images/icon-meeting-open.svg");
     }
+
     .meeting__type-closed::before  {
         mask-image: url("../../images/icon-meeting-closed.svg") ;
     }
-
 
     .meeting__address{
         @extend %serif !optional;
     }
 }
 
+.leaflet-marker-icon,
+.meeting-detail {
+
+    &:focus {
+        outline: unset;
+        outline-color: currentColor;
+        outline-style: dotted;
+        outline-width: calc(var(--default-border-width) * 2);
+        outline-offset: calc(var(--default-border-width) * -2);
+    }
+
+}
 
 
 #map-meetings { height: 100%; width:100% }

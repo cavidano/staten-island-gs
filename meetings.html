@@ -183,7 +183,7 @@
 
                 <div class="theme-white font-size-md box-shadow-2" id="sidebar">
 
-                    <button class="btn btn--icon-only theme-white toggle box-shadow-1" title="Pizza" type="button" data-toggle-column>
+                    <button class="btn btn--icon-only toggle blur-background box-shadow-1" title="Toggle Sidebar" type="button" data-toggle-column>
                         <span class="screen-reader-only">Toggle</span>
                         <span class="fas fa-ellipsis-v" aria-hidden="true"></span>
                     </button>
@@ -436,12 +436,14 @@
 
                     }, sidebarElement);
                     
-                    var removePart = L.DomUtil.create('button', 'btn btn--icon-only', meetingDetail);
+                    var unpinMeeting = L.DomUtil.create('button', 'btn btn--icon-only', meetingDetail);
                     
-                    removePart.innerHTML = '<span class="screen-reader-only">Remove</span>' +
+                    unpinMeeting.innerHTML = '<span class="screen-reader-only">Remove</span>' +
                                            '<span class="fas fa-times btn__icon"></span>';
+
+                    unpinMeeting.setAttribute("title", "Remove");
                     
-                    L.DomEvent.on(removePart, 'click', function (event) {
+                    L.DomEvent.on(unpinMeeting, 'click', function (event) {
                         markerLayer.getLayer(this.id).closePopup();
                         this.parentNode.removeChild(this);
                     }, sidebarElement);
@@ -498,7 +500,6 @@
                     sidebarShown = false;
                 }
 
-                //map.setView([40.5795, -74.1502], 13), 1000;
             });
 
         </script>
