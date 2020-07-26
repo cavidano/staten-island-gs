@@ -1,4 +1,23 @@
+/*
+
+In this file:
+
+// A. Imports
+// B. Variables
+// C. Text Shadows
+// D. I.E. 11 Support
+
+*/
+
+//////////////////////////////////////////////
+// A. Imports
+//////////////////////////////////////////////
+
 @import "partials/breakpoints";
+
+//////////////////////////////////////////////
+// B. Variables
+//////////////////////////////////////////////
 
 :root{
 
@@ -6,7 +25,6 @@
     --base-font-family: 'Montserrat', sans-serif;
 
     --base-font-size: 22px;
-    // --base-line-height: 1.4;
 
     --base-font-weight-normal: 400;
     --base-font-weight-bold: 900;
@@ -20,6 +38,10 @@
     --border-radius: 0.375em;
 }
 
+//////////////////////////////////////////////
+// C. Global Elements
+//////////////////////////////////////////////
+
 p:not([class]) {
     font-family:'EB Garamond', serif;
 }
@@ -30,15 +52,20 @@ p:not([class]) {
     }
 }
 
+//////////////////////////////////////////////
+// D. Map
+//////////////////////////////////////////////
+
 #map-columns{
     --map-max-size: 350px; 
     display: grid;
     height: 100vh;
 
-    grid-template-rows: var(--map-max-size) 1fr;
     grid-template-areas: 
         "map"
         "sidebar";
+
+    grid-template-rows: var(--map-max-size) 1fr;
 
     #map{
         grid-area: 'map';
@@ -48,13 +75,26 @@ p:not([class]) {
     #sidebar{
         grid-area: 'sidebar';
         z-index: 25000;
+        position: relative;
+
+        button.toggle{
+            position: absolute;
+            top: var(--s2);
+            left: -50px;
+        }
     }
     
     @include breakpoints-up(lg) {
         grid-template-rows: unset;
-        grid-template-columns: 1fr var(--map-max-size);
         grid-template-areas: 
             "map sidebar";
+
+        grid-template-columns: 1fr 0;
+
+        &.sidebar-show{
+            grid-template-columns: 1fr var(--map-max-size);
+        }
+
     }
 
 }

@@ -156,8 +156,11 @@
         <main id="skip-header-content">
 
              <div class="theme-secondary padding-3">
+
                  <div class="container text-align-center">
-                     <h1 class="screen-reader-only" >Staten Island Meeting List</h1>
+                    
+                    <h1 class="screen-reader-only" >Staten Island Meeting List</h1>
+                    
                     <div class="narrow font-size-md">
                         <ul class="nav nav--divider nav--horizontal border rounded">
                             <li>
@@ -179,6 +182,11 @@
                 </div>
 
                 <div class="theme-white font-size-md box-shadow-2" id="sidebar">
+
+                    <button class="btn btn--icon-only theme-white toggle box-shadow-1" title="Pizza" type="button" data-toggle-column>
+                        <span class="screen-reader-only">Toggle</span>
+                        <span class="fas fa-ellipsis-v" aria-hidden="true"></span>
+                    </button>
 
                     <ul class="nav nav--divider border-bottom sticky-top">
                         <li>
@@ -317,6 +325,10 @@
 
         <script defer>
 
+            //////////////////////////////////////////////
+            // A. Create Map
+            //////////////////////////////////////////////
+
             var map = L.map('map-meetings', {
                 center: [40.5795, -74.1502],
                 zoom: 13,
@@ -366,11 +378,14 @@
 
             L.marker([40.545310, -74.165400], { icon: meetingOpen }).bindPopup("I am an orange leaf.").addTo(map);
 
-            ///////////////////////////////////
+            //////////////////////////////////////////////
+            // B. Map Height
+            //////////////////////////////////////////////
+            
+            const mapColumns = document.getElementById("map-columns");
 
             function setMapHeight() {
                 const windowHeight = window.innerHeight;
-                const mapColumns = document.getElementById("map-columns");
 
                 const mapColumnsPos = mapColumns.offsetTop;
 
@@ -384,6 +399,13 @@
 
             window.addEventListener('load', setMapHeight);
             window.addEventListener('resize', setMapHeight);
+
+            const toggleColButton = document.querySelector('[data-toggle-column]');
+
+            toggleColButton.addEventListener('click', event => {
+                mapColumns.classList.toggle("sidebar-show");
+                //map.setView([40.5795, -74.1502], 13), 1000;
+            });
 
         </script>
 
