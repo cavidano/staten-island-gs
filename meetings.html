@@ -188,19 +188,69 @@
                         <span class="fas fa-ellipsis-v" aria-hidden="true"></span>
                     </button>
 
-                    <ul class="nav nav--divider border-bottom sticky-top">
+                    <ul class="nav nav--divider border-bottom sticky-top font-size-md">
                         <li>
-                            <a href="#1">Filter</a>
+                            <a href="#1" data-toggle="dropdown">Days of the Week</a>
+                            <ul class="theme-light font-size-sm">
+                                <li>
+                                    <label class="form-entry__options__check">
+                                        <input type="checkbox" name="checkbox-group-example" checked>
+                                        <span class="checkbox__label">
+                                            Sunday
+                                        </span>
+                                    </label>
+                                </li>
+                               <li>
+                                    <label class="form-entry__options__check">
+                                        <input type="checkbox" name="checkbox-group-example" checked>
+                                        <span class="checkbox__label">
+                                            Monday
+                                        </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-entry__options__check">
+                                        <input type="checkbox" name="checkbox-group-example" checked>
+                                        <span class="checkbox__label">
+                                            Tuesday
+                                        </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-entry__options__check">
+                                        <input type="checkbox" name="checkbox-group-example" checked>
+                                        <span class="checkbox__label">
+                                            Wednesday
+                                        </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-entry__options__check">
+                                        <input type="checkbox" name="checkbox-group-example" checked>
+                                        <span class="checkbox__label">
+                                            Thursday
+                                        </span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="form-entry__options__check">
+                                        <input type="checkbox" name="checkbox-group-example" checked>
+                                        <span class="checkbox__label">
+                                            Friday
+                                        </span>
+                                    </label>
+                                <li>
+                                <li>
+                                    <label class="form-entry__options__check">
+                                        <input type="checkbox" name="checkbox-group-example" checked>
+                                        <span class="checkbox__label">
+                                            Saturday
+                                        </span>
+                                    </label>
+                                <li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="#1">Filter</a>
-                        </li>
-                        <li>
-                            <a href="#1">Filter</a>
-                        </li>
-                        <li>
-                            <a href="#1">Filter</a>
-                        </li>
+
                     </ul>
 
                 </div>
@@ -422,6 +472,12 @@
                     meetingDetail.innerHTML = contentSidebar;
                     
                     meetingDetail.setAttribute("tabindex", 0);
+
+                    meetingDetail.setAttribute("data-cool", "neat");
+
+                    setTimeout( function() {
+                        meetingDetail.setAttribute("data-cool", "shit");
+                    }, 3000)
                     
                     L.DomEvent.on( meetingDetail, 'click', function (event) {
 
@@ -439,7 +495,7 @@
                     var unpinMeeting = L.DomUtil.create('button', 'btn btn--icon-only', meetingDetail);
                     
                     unpinMeeting.innerHTML = '<span class="screen-reader-only">Remove</span>' +
-                                           '<span class="fas fa-times btn__icon"></span>';
+                                             '<span class="fas fa-times btn__icon"></span>';
 
                     unpinMeeting.setAttribute("title", "Remove");
                     
