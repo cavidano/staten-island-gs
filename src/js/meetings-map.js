@@ -238,5 +238,7 @@ toggleLocationButton.addEventListener('click', function () {
         mapColumns.classList.remove("sidebar-shown");
         sidebarShown = false;
     }
+    
+    map.invalidateSize(true);
 
 });
