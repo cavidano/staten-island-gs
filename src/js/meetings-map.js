@@ -41,12 +41,6 @@ var map = L.map('map-meetings', {
     zoomControl: false,
 });
 
-// L.control.zoom({
-//     position: 'topleft',
-//     zoomInText: '<span class="fas fa-plus"></span>',
-//     zoomOutText: '<span class="fas fa-minus"></span>',
-// }).addTo(map);
-
 var myPath = ".";
 
 // Create custom pin
@@ -202,9 +196,21 @@ createMarker(
 
 window.addEventListener('resize', setMapHeight);
 
-const toggleColButton = document.querySelector('[data-toggle-column]');
+const zoomInButton = document.querySelector('[data-map-zoom-in]');
+const zoomOutButton = document.querySelector('[data-map-zoom-out]');
+const toggleLocationButton = document.querySelector('[data-toggle-locations]');
 
-toggleColButton.addEventListener('click', event => {
+
+
+zoomInButton.addEventListener('click', function (event) {
+    map.setZoom(map.getZoom() + 1)
+});
+
+zoomOutButton.addEventListener('click', function (event) {
+    map.setZoom(map.getZoom() - 1)
+});
+
+toggleLocationButton.addEventListener('click', function () {
 
     if( sidebarShown === false){
         mapColumns.classList.add("sidebar-shown");
