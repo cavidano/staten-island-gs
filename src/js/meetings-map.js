@@ -1,7 +1,8 @@
-
+//////////////////////////////////////////////
+// A. Global Variables
+//////////////////////////////////////////////
 
 const mapColumns = document.getElementById("map-columns");
-const mapColumnsOriginalHeight = mapColumns.scrollHeight;
 
 let sidebarShown = false;
 
@@ -26,13 +27,12 @@ function setMapHeight() {
 setMapHeight();
 
 //////////////////////////////////////////////
-// A. Create Map
+// B. Create Map
 //////////////////////////////////////////////
 
 var map = L.map('map-meetings', {
     center: [40.5795, -74.1502],
-    zoom: 6,
-    minZoom: 4,
+    minZoom: 9,
     maxZoom: 15,
     zoomSnap: 0.25,
     zoomDelta: 0.5,
@@ -41,16 +41,16 @@ var map = L.map('map-meetings', {
     zoomControl: false,
 });
 
-
-L.control.zoom({
-    position: 'topleft',
-    zoomInText: '<span class="fas fa-plus"></span>',
-    zoomOutText: '<span class="fas fa-minus"></span>',
-}).addTo(map);
+// L.control.zoom({
+//     position: 'topleft',
+//     zoomInText: '<span class="fas fa-plus"></span>',
+//     zoomOutText: '<span class="fas fa-minus"></span>',
+// }).addTo(map);
 
 var myPath = ".";
 
 // Create custom pin
+
 var Icon = L.Icon.extend({
     options: {
         iconSize: [30, 45],
