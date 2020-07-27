@@ -396,7 +396,7 @@
             var map = L.map('map-meetings', {
                 center: [40.5795, -74.1502],
                 zoom: 13,
-                minZoom: 10,
+                minZoom: 4,
                 maxZoom: 15,
                 zoomSnap: 0.25,
                 zoomDelta: 0.5,
@@ -427,14 +427,27 @@
                 }
             });
 
-            var si_bounds = new L.GeoJSON.AJAX("whoa.geojson");
-            
-            si_bounds.on('data:loaded', function(){
-                var cool = si_bounds.getBounds();
-                map.fitBounds(si_bounds.getBounds(), { padding: [50, 50] });
+            // Load SI Bounds
+
+            var bounds = new L.GeoJSON.AJAX("./lib/geojson/statenIsland.geojson");
+            bounds.addTo(map);
+
+            bounds.on('data:loaded', function () {
+                centerMap();
             });
 
+            function centerMap(){
+                map.fitBounds(bounds.getBounds(), { padding: [100, 100] });
+            }
+
+            // var si_bounds = new L.GeoJSON.AJAX("./lib/geojson/statenIsland.geojson");
+            
+            // si_bounds.on('data:loaded', function(){
+            //     map.fitBounds(si_bounds.getBounds(), { padding: [0, 0] });
+            // }).addTo(map);
+
             // Custom popup options
+
             var markerOptions = {
                 riseOnHover: true,
                 icon: Icon
@@ -465,8 +478,8 @@
                 var contentPopUp = '<strong>' + meetingTitle + '</strong>';
 
                 var contentSidebar = '<p class="meeting__title">' + meetingTitle + '</p>' +
-                                        '<p class="meeting__type">' + meeting + ' Discussion' + '</p>' +
-                                        '<p class="meeting__address">' + meetingAddress + '</p>';
+                                     '<p class="meeting__type">' + meeting + ' Discussion' + '</p>' +
+                                     '<p class="meeting__address">' + meetingAddress + '</p>';
                 
                 var marker = L.marker(coords, { icon: meetingType }).addTo(markerLayer);
                 
@@ -570,14 +583,15 @@
 
                 if (window.matchMedia('( min-width: 960px)').matches) {
                     mapColumns.style.height = windowHeight - mapColumnsPos + "px";
+                    centerMap();
                 } else {
                     return;
                 }
 
             }
 
-            window.addEventListener('load', setMapHeight);
-            window.addEventListener('resize', setMapHeight);
+            //window.addEventListener('load', setMapHeight);
+            //window.addEventListener('resize', setMapHeight);
 
             const toggleColButton = document.querySelector('[data-toggle-column]');
 
