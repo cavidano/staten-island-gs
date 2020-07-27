@@ -47,8 +47,9 @@ In this file:
 }
 
 .blur-background{
-    background-color: rgba( #ffffff, 0.5);
-    backdrop-filter: blur(0.24rem);
+    // background-color: rgba( #ffffff, 1) !important;
+    backdrop-filter: blur(0.24rem) brightness(108%);
+    color: (var(--primary));
 }
 
 p:not([class]) {
@@ -76,19 +77,23 @@ p:not([class]) {
     grid-template-rows: var(--map-max-size) 1fr;
 
     #map {
+        position: relative;
         grid-area: 'map';
     }
 
-    #sidebar {
-        grid-area: 'sidebar';
-        z-index: 25000;
-        position: relative;
+    #map-zoom-control{
+        position: absolute;
+        top: var(--s1);
+        left: var(--s1);
+        z-index: 1000;
+    }
 
-        button.toggle{
-            position: absolute;
-            top: var(--s2);
-            left: -50px;
-        }
+    #sidebar {
+        position: relative;
+        z-index: 15000;
+        overflow-y: scroll;
+        
+        grid-area: 'sidebar';
     }
     
     @include breakpoints-up(lg) {

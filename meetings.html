@@ -164,10 +164,13 @@
                     <div class="narrow font-size-md">
                         <ul class="nav nav--divider nav--horizontal border rounded">
                             <li>
-                                <a href="#1">Map View</a>
+                                <a href="#1">Map</a>
                             </li>
                             <li>
-                                <a href="#1">List View</a>
+                                <a href="#1">List</a>
+                            </li>
+                            <li>
+                                <a href="#1">Filter</a>
                             </li>
                         </ul>
                     </div>
@@ -178,17 +181,37 @@
             <section id="map-columns">
 
                 <div class="theme-white" id="map">
+
+                    <ul class="nav li" id="map-zoom-control">
+
+                        <li>
+                            <button class="btn btn--icon-only toggle blur-background box-shadow-1" title="Zoom In" type="button">
+                                <span class="screen-reader-only">Toggle</span>
+                                <span class="fas fa-plus" aria-hidden="true"></span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn btn--icon-only toggle blur-background box-shadow-1" title="Zoom Out" type="button">
+                                <span class="screen-reader-only">Toggle</span>
+                                <span class="fas fa-minus" aria-hidden="true"></span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn btn--icon-only toggle blur-background box-shadow-1" title="Toggle Sidebar" type="button" data-toggle-column>
+                                <span class="screen-reader-only">Toggle</span>
+                                <span class="fas fa-map-marker-alt" aria-hidden="true"></span>
+                            </button>
+                        </li>
+
+                    </ul>
+
                     <div id="map-meetings"></div>
+
                 </div>
 
-                <div class="font-size-md box-shadow-2" id="sidebar">
+                <div class="theme-light font-size-md box-shadow-2" id="sidebar">
 
-                    <button class="btn btn--icon-only toggle blur-background box-shadow-1" title="Toggle Sidebar" type="button" data-toggle-column>
-                        <span class="screen-reader-only">Toggle</span>
-                        <span class="fas fa-ellipsis-v" aria-hidden="true"></span>
-                    </button>
-
-                    <ul class="nav nav--divider border-bottom sticky-top font-size-md">
+                    <ul class="nav nav--divider border-bottom sticky-top font-size-md display-none">
                         <li>
                             <a href="#1" data-toggle="dropdown">Days of the Week</a>
                             <ul class="theme-light font-size-sm">
