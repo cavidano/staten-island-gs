@@ -68,6 +68,10 @@ p:not([class]) {
 
 #map-columns {
     --map-max-size: 350px; 
+
+    min-height: 600px;
+    height: 100%;
+    
     display: grid;
 
     grid-template-areas: 
@@ -96,12 +100,13 @@ p:not([class]) {
     #sidebar {
         position: relative;
         z-index: 9000;
-        overflow-y: scroll;
-
-        min-height: 100%;
 
         grid-area: 'sidebar';
 
+        overflow-y: scroll;
+    }
+
+    #marker-info {
         display: flex;
         flex-direction: column-reverse;
         justify-content: flex-end;
@@ -252,7 +257,7 @@ a[class*="leaflet-control-zoom"]:focus {
 }
 
 
-#map-meetings { height: 100%; width:100% }
+#map-loader { height: 100%; width:100% }
 
 
 svg.current-color{

@@ -27,10 +27,10 @@ function setMapHeight() {
 setMapHeight();
 
 //////////////////////////////////////////////
-// B. Create Map
+// B. Create Leaflet Map
 //////////////////////////////////////////////
 
-var map = L.map('map-meetings', {
+var map = L.map('map-loader', {
     center: [40.5795, -74.1502],
     setZoom: 8,
     minZoom: 8,
@@ -117,7 +117,7 @@ function createMarker(
 
         if (document.getElementById(id) != null) return;
 
-        var sidebarElement = L.DomUtil.create('div', 'sidebarElement', document.getElementById('sidebar'));
+        var sidebarElement = L.DomUtil.create('div', 'sidebarElement', document.getElementById('marker-info'));
         sidebarElement.id = id;
         
         var meetingDetail = L.DomUtil.create('div', 'meeting-detail' + ' ' + meeting.toLowerCase() + ' ' + 'border-bottom', sidebarElement);
