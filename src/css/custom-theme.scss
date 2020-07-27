@@ -47,7 +47,6 @@ In this file:
 }
 
 .background-blur{
-    // background-color: rgba( #ffffff, 1) !important;
     backdrop-filter: blur(0.24rem) brightness(108%);
     color: (var(--primary));
 }
@@ -67,10 +66,9 @@ p:not([class]) {
 //////////////////////////////////////////////
 
 #map-view{
-
     --map-max-size: 350px;
 
-    height: 100%;
+    height: 300px;
     
     display: grid;
 
@@ -78,10 +76,10 @@ p:not([class]) {
         "map"
         "sidebar";
         
-    grid-template-rows: 100% 1fr;
+    grid-template-rows: 1fr 0;
 
     &.data-shown {
-       grid-template-rows: var(--map-max-size) 1fr; 
+       grid-template-rows: 3fr 1fr; 
     }
 
     #map-view__map-container {
@@ -118,6 +116,10 @@ p:not([class]) {
     }
     
     @include breakpoints-up(lg) {
+
+        #map-view__data-container {
+            overflow-y: scroll;
+        }
 
         grid-template-rows: unset !important;
         

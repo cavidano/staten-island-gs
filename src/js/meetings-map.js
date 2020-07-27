@@ -15,8 +15,14 @@ function setMapHeight() {
     const windowHeight = window.innerHeight;
 
     const mapTargetPos = mapTarget.offsetTop;
-    
-    mapTarget.style.height = windowHeight - mapTargetPos + "px";
+
+    const adjustedHeight = windowHeight - mapTargetPos + "px";
+
+    if ( window.matchMedia('(min-width: 1000px)').matches ) {
+        mapTarget.style.height = adjustedHeight;
+    } else {
+        mapTarget.style.height = "300px";
+    }
 
 }
 
