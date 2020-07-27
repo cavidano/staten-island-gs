@@ -68,7 +68,6 @@ p:not([class]) {
 #map-columns {
     --map-max-size: 350px; 
     display: grid;
-    height: 100vh;
 
     grid-template-areas: 
         "map"
@@ -78,7 +77,6 @@ p:not([class]) {
 
     #map {
         grid-area: 'map';
-        height: 100%;
     }
 
     #sidebar {
@@ -107,7 +105,6 @@ p:not([class]) {
     }
 
 }
-
 
 .leaflet-popup-tip,
 .leaflet-popup-content-wrapper {
