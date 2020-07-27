@@ -41,7 +41,6 @@ var map = L.map('map-meetings', {
     zoomControl: false,
 });
 
-L.tileLayer.provider('CartoDB.VoyagerNoLabels').addTo(map);
 
 L.control.zoom({
     position: 'topleft',
@@ -58,7 +57,7 @@ var Icon = L.Icon.extend({
         iconAnchor: [15, 45],
         shadowSize: [45, 22.5],
         shadowAnchor: [22.5, 22.5],
-        shadowUrl: myPath + '/images/map-pin-shadow.svg',
+        shadowUrl: myPath + './images/map-pin-shadow.svg',
         popupAnchor:  [0, -50]
     }
 });
@@ -69,6 +68,7 @@ var siGeo = new L.GeoJSON.AJAX("./lib/geojson/statenIsland.geojson");
 
 siGeo.on('data:loaded', function() {
     centerMap(siGeo);
+    L.tileLayer.provider('CartoDB.VoyagerNoLabels').addTo(map);
 });
 
 function centerMap(myBounds){
