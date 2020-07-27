@@ -434,8 +434,6 @@
                 map.fitBounds(si_bounds.getBounds(), { padding: [50, 50] });
             });
 
-
-
             // Custom popup options
             var markerOptions = {
                 riseOnHover: true,
@@ -448,8 +446,6 @@
             // Create Markers
 
             markerLayer = L.layerGroup([]).addTo(map);
-
-
 
             function createMarker(
                 coords, 
@@ -469,8 +465,8 @@
                 var contentPopUp = '<strong>' + meetingTitle + '</strong>';
 
                 var contentSidebar = '<p class="meeting__title">' + meetingTitle + '</p>' +
-                                     '<p class="meeting__type">' + meeting + ' Discussion' + '</p>' +
-                                     '<p class="meeting__address">' + meetingAddress + '</p>';
+                                        '<p class="meeting__type">' + meeting + ' Discussion' + '</p>' +
+                                        '<p class="meeting__address">' + meetingAddress + '</p>';
                 
                 var marker = L.marker(coords, { icon: meetingType }).addTo(markerLayer);
                 
@@ -562,9 +558,6 @@
                 "Steps to the Stars",
                 "5371 Amboy Rd,<br>Staten Island, NY<br>10312"
             );
-
-
-            //var bounds = addedGeoJSON.getBounds();
 
             //////////////////////////////////////////////
             // B. Map Height
