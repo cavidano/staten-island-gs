@@ -164,7 +164,7 @@
                     <div class="narrow font-size-md">
                         <ul class="nav nav--divider nav--horizontal border rounded">
                             <li>
-                                <a href="#1">Map</a>
+                                <a href="#1" aria-current="page">Map</a>
                             </li>
                             <li>
                                 <a href="#1">List</a>
@@ -185,19 +185,19 @@
                     <ul class="nav li" id="map-zoom-control">
 
                         <li>
-                            <button class="btn btn--icon-only toggle blur-background box-shadow-1" title="Zoom In" type="button" data-map-zoom-in>
+                            <button class="btn btn--icon-only toggle background-blur box-shadow-1" title="Zoom In" type="button" data-map-zoom-in>
                                 <span class="screen-reader-only">Toggle</span>
                                 <span class="fas fa-plus" aria-hidden="true"></span>
                             </button>
                         </li>
                         <li>
-                            <button class="btn btn--icon-only toggle blur-background box-shadow-1" title="Zoom Out" type="button" data-map-zoom-out>
+                            <button class="btn btn--icon-only toggle background-blur box-shadow-1" title="Zoom Out" type="button" data-map-zoom-out>
                                 <span class="screen-reader-only">Toggle</span>
                                 <span class="fas fa-minus" aria-hidden="true"></span>
                             </button>
                         </li>
-                        <li>
-                            <button class="btn btn--icon-only toggle blur-background box-shadow-1" title="Toggle Sidebar" type="button" data-toggle-locations>
+                        <li class="display-none display-block--lg">
+                            <button class="btn btn--icon-only toggle background-blur box-shadow-1" title="Toggle Sidebar" type="button" data-toggle-locations>
                                 <span class="screen-reader-only">Toggle</span>
                                 <span class="fas fa-map-marker-alt" aria-hidden="true"></span>
                             </button>
@@ -209,7 +209,7 @@
 
                 </div>
 
-                <div class="theme-light font-size-md box-shadow-2" id="sidebar">
+                <div class="font-size-md box-shadow-2" id="sidebar">
 
                     <ul class="nav nav--divider border-bottom sticky-top font-size-md display-none">
                         <li>

@@ -46,7 +46,7 @@ In this file:
     font-family:'EB Garamond', serif;
 }
 
-.blur-background{
+.background-blur{
     // background-color: rgba( #ffffff, 1) !important;
     backdrop-filter: blur(0.24rem) brightness(108%);
     color: (var(--primary));
@@ -86,14 +86,25 @@ p:not([class]) {
         top: var(--s1);
         left: var(--s1);
         z-index: 1000;
+
+        button[disabled] {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
     }
 
     #sidebar {
         position: relative;
-        z-index: 15000;
+        z-index: 9000;
         overflow-y: scroll;
 
+        min-height: 100%;
+
         grid-area: 'sidebar';
+
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
     }
     
     @include breakpoints-up(lg) {

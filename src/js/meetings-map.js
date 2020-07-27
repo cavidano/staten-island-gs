@@ -16,7 +16,7 @@ function setMapHeight() {
 
     const mapColumnsPos = mapColumns.offsetTop;
 
-    if (window.matchMedia('( min-width: 1000px)').matches) {
+    if (window.matchMedia('( min-width: 1000px )').matches) {
         mapColumns.style.height = windowHeight - mapColumnsPos + "px";
     } else {
         mapColumns.style.height = 'initial';
@@ -32,10 +32,9 @@ setMapHeight();
 
 var map = L.map('map-meetings', {
     center: [40.5795, -74.1502],
-    minZoom: 9,
-    maxZoom: 15,
-    zoomSnap: 0.25,
-    zoomDelta: 0.5,
+    setZoom: 8,
+    minZoom: 8,
+    maxZoom: 16,
     scrollWheelZoom: false,
     attributionControl: false,
     zoomControl: false,
@@ -58,7 +57,7 @@ var Icon = L.Icon.extend({
 
 // Load SI Bounds
 
-var siGeo = new L.GeoJSON.AJAX("./lib/geojson/statenIsland.geojson");
+var siGeo = new L.GeoJSON.AJAX('./lib/geojson/statenIsland.geojson');
 
 siGeo.on('data:loaded', function() {
     centerMap(siGeo);
@@ -100,8 +99,8 @@ function createMarker(
     var contentPopUp = '<strong>' + meetingTitle + '</strong>';
 
     var contentSidebar = '<p class="meeting__title">' + meetingTitle + '</p>' +
-                            '<p class="meeting__type">' + meeting + ' Discussion' + '</p>' +
-                            '<p class="meeting__address">' + meetingAddress + '</p>';
+                         '<p class="meeting__type">' + meeting + ' Discussion' + '</p>' +
+                         '<p class="meeting__address">' + meetingAddress + '</p>';
     
     var marker = L.marker(coords, { icon: meetingType }).addTo(markerLayer);
     
@@ -204,12 +203,30 @@ const zoomInButton = document.querySelector('[data-map-zoom-in]');
 const zoomOutButton = document.querySelector('[data-map-zoom-out]');
 const toggleLocationButton = document.querySelector('[data-toggle-locations]');
 
+map.on("zoomend", function () {
+    let currentZoom = map.getZoom();
+    let maxZoom = map.options.maxZoom;
+    let minZoom = map.options.minZoom;
+
+    if (currentZoom >= maxZoom) {
+        zoomInButton.disabled = true;
+    } else {
+        zoomInButton.disabled = false;
+    }
+
+    if (currentZoom <= minZoom) {
+        zoomOutButton.disabled = true;
+    } else{
+        zoomOutButton.disabled = false;
+    }
+});
+
 zoomInButton.addEventListener('click', function (event) {
-    map.setZoom(map.getZoom() + 1)
+   map.zoomIn();
 });
 
 zoomOutButton.addEventListener('click', function (event) {
-    map.setZoom(map.getZoom() - 1)
+    map.zoomOut()
 });
 
 toggleLocationButton.addEventListener('click', function () {
