@@ -2,7 +2,7 @@
 // A. Global Variables
 //////////////////////////////////////////////
 
-const mapColumns = document.getElementById("map-columns");
+const mapTarget = document.getElementById("map-view");
 
 let sidebarShown = false;
 
@@ -14,13 +14,9 @@ function setMapHeight() {
 
     const windowHeight = window.innerHeight;
 
-    const mapColumnsPos = mapColumns.offsetTop;
-
-    if (window.matchMedia('( min-width: 1000px )').matches) {
-        mapColumns.style.height = windowHeight - mapColumnsPos + "px";
-    } else {
-        mapColumns.style.height = 'initial';
-    }
+    const mapTargetPos = mapTarget.offsetTop;
+    
+    mapTarget.style.height = windowHeight - mapTargetPos + "px";
 
 }
 
@@ -32,7 +28,7 @@ setMapHeight();
 
 var map = L.map('map-loader', {
     center: [40.5795, -74.1502],
-    setZoom: 8,
+    setZoom: 12,
     minZoom: 8,
     maxZoom: 16,
     scrollWheelZoom: false,
@@ -109,7 +105,7 @@ function createMarker(
     marker.on('click', function (event) {
 
         if( sidebarShown === false){
-            mapColumns.classList.add('sidebar-shown');
+            mapTarget.classList.add('data-shown');
             sidebarShown = true;
         }
 
@@ -117,10 +113,10 @@ function createMarker(
 
         if (document.getElementById(id) != null) return;
 
-        var sidebarElement = L.DomUtil.create('div', 'sidebarElement', document.getElementById('marker-info'));
-        sidebarElement.id = id;
+        var dataLoader = L.DomUtil.create('div', 'dataLoader', document.getElementById('data-loader'));
+        dataLoader.id = id;
         
-        var meetingDetail = L.DomUtil.create('div', 'meeting-detail' + ' ' + meeting.toLowerCase() + ' ' + 'border-bottom', sidebarElement);
+        var meetingDetail = L.DomUtil.create('div', 'meeting-detail' + ' ' + meeting.toLowerCase() + ' ' + 'border-bottom', dataLoader);
         meetingDetail.innerHTML = contentSidebar;
         
         meetingDetail.setAttribute("tabindex", 0);
@@ -142,7 +138,7 @@ function createMarker(
                 marker.bounce(2);
             }
 
-        }, sidebarElement);
+        }, dataLoader);
         
         var unpinMeeting = L.DomUtil.create('button', 'btn btn--icon-only', meetingDetail);
         
@@ -154,7 +150,7 @@ function createMarker(
         L.DomEvent.on(unpinMeeting, 'click', function (event) {
             markerLayer.getLayer(this.id).closePopup();
             this.parentNode.removeChild(this);
-        }, sidebarElement);
+        }, dataLoader);
     });
 }
 
@@ -232,13 +228,13 @@ zoomOutButton.addEventListener('click', function (event) {
 toggleLocationButton.addEventListener('click', function () {
 
     if( sidebarShown === false){
-        mapColumns.classList.add("sidebar-shown");
+        mapTarget.classList.add("data-shown");
         sidebarShown = true;
     } else if ( sidebarShown === true) {
-        mapColumns.classList.remove("sidebar-shown");
+        mapTarget.classList.remove("data-shown");
         sidebarShown = false;
     }
-    
+
     map.invalidateSize(true);
 
 });

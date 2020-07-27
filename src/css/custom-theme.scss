@@ -66,10 +66,10 @@ p:not([class]) {
 // D. Map
 //////////////////////////////////////////////
 
-#map-columns {
-    --map-max-size: 350px; 
+#map-view{
 
-    min-height: 600px;
+    --map-max-size: 350px;
+
     height: 100%;
     
     display: grid;
@@ -77,15 +77,20 @@ p:not([class]) {
     grid-template-areas: 
         "map"
         "sidebar";
+        
+    grid-template-rows: 100% 1fr;
 
-    grid-template-rows: var(--map-max-size) 1fr;
-
-    #map {
-        position: relative;
-        grid-area: 'map';
+    &.data-shown {
+       grid-template-rows: var(--map-max-size) 1fr; 
     }
 
-    #map-zoom-control{
+    #map-view__map-container {
+        position: relative;
+
+        grid-area: "map";
+    }
+
+    #map-controls {
         position: absolute;
         top: var(--s1);
         left: var(--s1);
@@ -97,7 +102,7 @@ p:not([class]) {
         }
     }
 
-    #sidebar {
+    #map-view__data-container {
         position: relative;
         z-index: 9000;
 
@@ -106,20 +111,22 @@ p:not([class]) {
         overflow-y: scroll;
     }
 
-    #marker-info {
+    #data-loader {
         display: flex;
         flex-direction: column-reverse;
         justify-content: flex-end;
     }
     
     @include breakpoints-up(lg) {
-        grid-template-rows: unset;
+
+        grid-template-rows: unset !important;
+        
         grid-template-areas: 
             "map sidebar";
 
         grid-template-columns: 1fr 0;
 
-        &.sidebar-shown{
+        &.data-shown {
             grid-template-columns: 1fr var(--map-max-size);
         }
 
@@ -257,8 +264,10 @@ a[class*="leaflet-control-zoom"]:focus {
 }
 
 
-#map-loader { height: 100%; width:100% }
-
+#map-loader { 
+    height: 100%; 
+    width:100% 
+}
 
 svg.current-color{
     fill: currentColor;
