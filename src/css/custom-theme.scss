@@ -156,6 +156,34 @@ a[class*="leaflet-control-zoom"]:focus {
     padding: var(--s2);
     cursor: pointer;
 
+    &::before{
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        transition: opacity 0.5s ease-in-out;
+    }
+
+
+    &.open::before{
+        background-color: var(--secondary);
+    }
+
+    &.closed::before{
+        background-color: #E07A5F;
+    }
+
+    &[data-highlight="true"]::before {
+        opacity: 0.05;
+    }
+
+    &[data-highlight="false"]::before {
+        opacity: 0;
+    }
+
     > button {
         position: absolute;
         top: var(--s1);
@@ -174,7 +202,7 @@ a[class*="leaflet-control-zoom"]:focus {
         margin-bottom: 0.5em;
     }
 
-    [class*="meeting__type-"]{
+    .meeting__type{
         font-size: var(--font-size-sm);
         margin-bottom: 0.5em;
         display: flex;
@@ -183,21 +211,21 @@ a[class*="leaflet-control-zoom"]:focus {
         opacity: 0.75;
 
         &::before {
+            content: "";
             height: 1.5em;
             width: 1.5em;
-            content: "";
             background-color: currentColor;
             mask-size: contain;
             mask-repeat: no-repeat;
         }
     }
 
-    .meeting__type-open::before {
+    &.open .meeting__type::before {
         mask-image: url("../../images/icon-meeting-open.svg");
     }
 
-    .meeting__type-closed::before  {
-        mask-image: url("../../images/icon-meeting-closed.svg") ;
+    &.closed .meeting__type::before  {
+        mask-image: url("../../images/icon-meeting-closed.svg") !important;
     }
 
     .meeting__address{
@@ -251,26 +279,3 @@ svg.current-color{
 footer{
     padding-top: 0.1px;
 }
-
-// Map
-
-
-
-// .btn--outline {
-//     position: relative;
-//     overflow: visible;
-
-//     &::before{
-//         content: "";
-//         position: absolute;
-//         top: 0;
-//         right: 0;
-//         bottom: 0;
-//         left: 0;
-        
-//         display: block;
-//         border-radius: inherit;
-    
-//         box-shadow: 0.5em 0.5em 0 currentColor;
-//     }
-// }

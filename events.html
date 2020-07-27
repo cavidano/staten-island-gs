@@ -22,8 +22,6 @@
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-
         <!-- Font Awesome Kit -->
         <script data-search-pseudo-elements defer src="https://kit.fontawesome.com/d0e9d4ccb2.js" crossorigin="anonymous"></script>
 
@@ -34,7 +32,7 @@
 
     </head>
 
-    <body id="section-meetings">
+    <body id="section-events">
 
         <!-- For keyboard users -->
         <a class="screen-reader-only focusable-only" href="#skip-header-target">Skip Header</a>
@@ -117,13 +115,13 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="theme-primary">
-                        <a href="#1" aria-current="page">
+                    <li>
+                        <a href="meetings.html">
                             <strong>Meetings</strong>
                         </a>
                     </li>
-                    <li>
-                        <a href="events.html">
+                    <li class="theme-primary">
+                        <a href="#1" aria-current="page">
                             <strong>Events</strong>
                         </a>
                     </li>
@@ -155,114 +153,294 @@
 
         <main id="skip-header-content">
 
-             <div class="theme-primary padding-3">
+            <section class="theme-primary">
 
-                 <div class="container text-align-center">
-                    
-                    <h1 class="screen-reader-only">Staten Island Meeting List</h1>
-                    
-                    <div class="narrow font-size-md">
-                        <ul class="nav nav--divider nav--horizontal border rounded">
-                            <li>
-                                <a href="#1">Map View</a>
-                            </li>
-                            <li>
-                                <a href="#1">List View</a>
-                            </li>
-                        </ul>
+                <div class="container medium text-align-center margin-y-5">
+
+                    <h1 class="banner-headline">
+                        Get Help Now
+                    </h1>
+
+                    <div class="margin-y-4">
+
+                        <div class="grid grid--gap-3 grid--cells-fill--md justify-content-center">
+
+                            <div class="grid__cell">
+
+                                <div class="card theme-white rounded box-shadow-3">
+
+                                    <div class="card__body">
+                                        <h2 class="h5">Time to Quit?</h2>
+                                        <p>
+                                            If you can't stop drinking and need support, you are not alone. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </p>
+                                    </div>
+
+                                    <div class="card__foot border-top">
+                                        <a class="btn theme-secondary display-block rounded" href="#1">Find A Meeting</a>
+                                    </div>
+
+                                </div>
+                                <!-- .card -->
+
+                            </div>
+                            <!-- .grid__cell -->
+
+                            <div class="grid__cell">
+                            
+                                <div class="card theme-white rounded box-shadow-3">
+                            
+                                    <div class="card__body">
+                                        <h2 class="h5">What is AA?</h2>
+                                        <p>
+                                            If you can't stop drinking and need help, you are not alone. Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit.
+                                        </p>
+                                    </div>
+                            
+                                    <div class="card__foot border-top">
+                                        <a class="btn theme-secondary display-block rounded" href="#1">Learn About AA</a>
+                                    </div>
+                                </div>
+                                <!-- .card -->
+                            
+                            </div>
+                            <!-- .grid__cell -->
+
+                        </div>
+                        <!-- .grid -->
+
                     </div>
-                    
-                 </div>
-             </div>
-
-            <section id="map-columns" class="theme-light">
-
-                <div class="" id="map">
-                    <div id="map-meetings"></div>
-                </div>
-
-                <div class="theme-white font-size-md box-shadow-2" id="sidebar">
-
-                    <button class="btn btn--icon-only toggle blur-background box-shadow-1" title="Toggle Sidebar" type="button" data-toggle-column>
-                        <span class="screen-reader-only">Toggle</span>
-                        <span class="fas fa-ellipsis-v" aria-hidden="true"></span>
-                    </button>
-
-                    <ul class="nav nav--divider border-bottom sticky-top font-size-md">
-                        <li>
-                            <a href="#1" data-toggle="dropdown">Days of the Week</a>
-                            <ul class="theme-light font-size-sm">
-                                <li class="border-bottom padding-y-1">
-                                    <label class="form-entry__options__check">
-                                        <input type="checkbox" name="checkbox-group-example" checked>
-                                        <span class="checkbox__label">
-                                           <span>All/None</span> 
-                                        </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="form-entry__options__check">
-                                        <input type="checkbox" name="checkbox-group-example" checked>
-                                        <span class="checkbox__label">
-                                            Sunday
-                                        </span>
-                                    </label>
-                                </li>
-                               <li>
-                                    <label class="form-entry__options__check">
-                                        <input type="checkbox" name="checkbox-group-example" checked>
-                                        <span class="checkbox__label">
-                                            Monday
-                                        </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="form-entry__options__check">
-                                        <input type="checkbox" name="checkbox-group-example" checked>
-                                        <span class="checkbox__label">
-                                            Tuesday
-                                        </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="form-entry__options__check">
-                                        <input type="checkbox" name="checkbox-group-example" checked>
-                                        <span class="checkbox__label">
-                                            Wednesday
-                                        </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="form-entry__options__check">
-                                        <input type="checkbox" name="checkbox-group-example" checked>
-                                        <span class="checkbox__label">
-                                            Thursday
-                                        </span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="form-entry__options__check">
-                                        <input type="checkbox" name="checkbox-group-example" checked>
-                                        <span class="checkbox__label">
-                                            Friday
-                                        </span>
-                                    </label>
-                                <li>
-                                <li>
-                                    <label class="form-entry__options__check">
-                                        <input type="checkbox" name="checkbox-group-example" checked>
-                                        <span class="checkbox__label">
-                                            Saturday
-                                        </span>
-                                    </label>
-                                <li>
-                            </ul>
-                        </li>
-
-                    </ul>
 
                 </div>
+                <!-- .container -->
 
+            </section>
+            <!-- backdrop -->
+
+            <section class="theme-light">
+
+                <div class="container narrow medium--md text-align-center margin-y-5">
+
+                    <h2>
+                       Monday's Meetings
+                    </h2>
+                
+                    <div class="text-align-left margin-y-4">
+                
+                        <div class="grid grid--gap-2 grid--cells-6--md grid--cells-4--lg">
+                
+                            <div class="grid__cell">
+                
+                                <div class="card theme-white rounded box-shadow-1">
+
+                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
+                                      <strong class="sans text-primary">7:00 pm</strong>
+                                      <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
+                                    </div>
+                
+                                    <div class="card__body">
+                                        <h2 class="h6">Friends of Bill W.</h2>
+                                        <p>
+                                            1331 Bay St<br>
+                                            Staten Island, NY 10305
+                                        </p>
+                                    </div>
+                
+                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
+                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
+                                    </div>
+
+                                </div>
+                                <!-- .card -->
+                
+                            </div>
+                            <!-- .grid__cell -->
+
+                            <div class="grid__cell">
+                            
+                                <div class="card theme-white rounded box-shadow-1">
+                            
+                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
+                                        <strong class="sans text-primary">7:00 pm</strong>
+                                        <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
+                                    </div>
+                            
+                                    <div class="card__body">
+                                        <h2 class="h6">Friends of Bill W.</h2>
+                                        <p>
+                                            1331 Bay St<br>
+                                            Staten Island, NY 10305
+                                        </p>
+                                    </div>
+                            
+                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
+                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
+                                    </div>
+
+                                </div>
+                                <!-- .card -->
+                            
+                            </div>
+                            <!-- .grid__cell -->
+
+                            <div class="grid__cell">
+                            
+                                <div class="card theme-white rounded box-shadow-1">
+                            
+                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
+                                        <strong class="sans text-primary">7:00 pm</strong>
+                                        <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
+                                    </div>
+                            
+                                    <div class="card__body">
+                                        <h2 class="h6">Friends of Bill W.</h2>
+                                        <p>
+                                            1331 Bay St<br>
+                                            Staten Island, NY 10305
+                                        </p>
+                                    </div>
+                            
+                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
+                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
+                                    </div>
+                                    
+                                </div>
+                                <!-- .card -->
+                            
+                            </div>
+                            <!-- .grid__cell -->
+
+                            <div class="grid__cell">
+                            
+                                <div class="card theme-white rounded box-shadow-1">
+                            
+                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
+                                        <strong class="sans text-primary">7:00 pm</strong>
+                                        <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
+                                    </div>
+                            
+                                    <div class="card__body">
+                                        <h2 class="h6">Friends of Bill W.</h2>
+                                        <p>
+                                            1331 Bay St<br>
+                                            Staten Island, NY 10305
+                                        </p>
+                                    </div>
+                            
+                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
+                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
+                                    </div>
+                                    
+                                </div>
+                                <!-- .card -->
+                            
+                            </div>
+                            <!-- .grid__cell -->
+
+                            <div class="grid__cell">
+                            
+                                <div class="card theme-white rounded box-shadow-1">
+                            
+                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
+                                        <strong class="sans text-primary">7:00 pm</strong>
+                                        <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
+                                    </div>
+                            
+                                    <div class="card__body">
+                                        <h2 class="h6">Friends of Bill W.</h2>
+                                        <p>
+                                            1331 Bay St<br>
+                                            Staten Island, NY 10305
+                                        </p>
+                                    </div>
+                            
+                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
+                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
+                                    </div>
+
+                                </div>
+                                <!-- .card -->
+                            
+                            </div>
+                            <!-- .grid__cell -->
+
+                            <div class="grid__cell">
+                            
+                                <div class="card theme-white rounded box-shadow-1">
+                            
+                                    <div class="card__head border-bottom flex-row justify-content-between align-items-center">
+                                        <strong class="sans text-primary">7:00 pm</strong>
+                                        <a href="#1" class="btn background-light text-primary font-size-sm rounded-pill">Open</a>
+                                    </div>
+                            
+                                    <div class="card__body">
+                                        <h2 class="h6">Friends of Bill W.</h2>
+                                        <p>
+                                            1331 Bay St<br>
+                                            Staten Island, NY 10305
+                                        </p>
+                                    </div>
+                            
+                                    <div class="card__foot font-size-sm" style="padding-top: 0;">
+                                        <a class="btn theme-primary display-block rounded" href="#1">Map and Details</a>
+                                    </div>
+
+                                </div>
+                                <!-- .card -->
+                            
+                            </div>
+                            <!-- .grid__cell -->
+                
+                        </div>
+                        <!-- .grid -->
+                
+                    </div>
+
+                    <a class="btn theme-dark rounded" href="#1">All Meetings</a>
+                
+                </div>
+                <!-- .container -->
+
+            </section>
+
+            <section class="">
+            
+                <div class="container medium text-align-center margin-y-5">
+
+                    <h2>
+                        Our Mission
+                    </h2>
+            
+                    <div class="text-align-left font-size-lg margin-y-3">
+            
+                        <div class="grid grid--gap-3 grid--cells-6--md">
+            
+                            <div class="grid__cell">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia esse tempora nobis quam molestiae culpa, totam enim
+                                    saepe adipisci sint nihil voluptatum perspiciatis in possimus illum reiciendis.
+                                </p>
+                            </div>
+                            <!-- .grid__cell -->
+            
+                            <div class="grid__cell">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia esse tempora nobis quam
+                                    molestiae culpa, totam enim saepe adipisci sint nihil voluptatum perspiciatis in
+                                    possimus illum reiciendis.
+                                </p>
+                            </div>
+                            <!-- .grid__cell -->
+            
+                        </div>
+                        <!-- .grid -->
+            
+                    </div>
+            
+                </div>
+                <!-- .container -->
+            
             </section>
 
         </main>
@@ -375,232 +553,6 @@
 
         <!-- NYC Core Javascript -->
         <script src="https://cdn.jsdelivr.net/gh/CityOfNewYork/nyc-core-framework@new-version/dist/js/nyc_core.js"></script>
-
-        <!-- Make sure you put this AFTER Leaflet's CSS -->
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-        
-        <script src="./lib/js/leaflet-providers.js"></script>
-        <script src="https://unpkg.com/leaflet.smooth_marker_bouncing@1.3.0/leaflet.smoothmarkerbouncing.js"></script>
-        <script src="./lib/js/leaflet.ajax.min.js"></script>
-
-        <script defer>
-
-            const mapColumns = document.getElementById("map-columns");
-
-            let sidebarShown = false;
-
-            //////////////////////////////////////////////
-            // A. Create Map
-            //////////////////////////////////////////////
-
-            var map = L.map('map-meetings', {
-                center: [40.5795, -74.1502],
-                zoom: 13,
-                minZoom: 10,
-                maxZoom: 15,
-                zoomSnap: 0.25,
-                zoomDelta: 0.5,
-                scrollWheelZoom: false,
-                attributionControl: false,
-                zoomControl: false,
-            });
-
-            L.tileLayer.provider('CartoDB.VoyagerNoLabels').addTo(map);
-
-            L.control.zoom({
-                position: 'topleft',
-                zoomInText: '<span class="fas fa-plus"></span>',
-                zoomOutText: '<span class="fas fa-minus"></span>',
-            }).addTo(map);
-
-            var myPath = ".";
-
-            // Create custom pin
-            var Icon = L.Icon.extend({
-                options: {
-                    iconSize: [30, 45],
-                    iconAnchor: [15, 45],
-                    shadowSize: [45, 22.5],
-                    shadowAnchor: [22.5, 22.5],
-                    shadowUrl: myPath + '/images/map-pin-shadow.svg',
-                    popupAnchor:  [0, -50]
-                }
-            });
-
-            var si_bounds = new L.GeoJSON.AJAX("whoa.geojson");
-            
-            si_bounds.on('data:loaded', function(){
-                var cool = si_bounds.getBounds();
-                map.fitBounds(si_bounds.getBounds(), { padding: [50, 50] });
-            });
-
-
-
-            // Custom popup options
-            var markerOptions = {
-                riseOnHover: true,
-                icon: Icon
-            };
-
-            var openMeeting = new Icon({ iconUrl: myPath + '/images/map-pin-open.svg'} );
-            var closedMeeting = new Icon({ iconUrl: myPath + '/images/map-pin-closed.svg'} );
-
-            // Create Markers
-
-            markerLayer = L.layerGroup([]).addTo(map);
-
-
-
-            function createMarker(
-                coords, 
-                meetingType,
-                meetingTitle,
-                meetingAddress
-            ) {
-
-                var meeting;
-
-                if( meetingType === closedMeeting ){
-                    meeting = 'Closed';
-                } else if(meetingType === openMeeting) {
-                    meeting = 'Open';
-                }
-
-                var contentPopUp = '<strong>' + meetingTitle + '</strong>';
-
-                var contentSidebar = '<p class="meeting__title">' + meetingTitle + '</p>' +
-                                     '<p class="meeting__type">' + meeting + ' Discussion' + '</p>' +
-                                     '<p class="meeting__address">' + meetingAddress + '</p>';
-                
-                var marker = L.marker(coords, { icon: meetingType }).addTo(markerLayer);
-                
-                marker.bindPopup(contentPopUp);
-
-                marker.on('click', function (event) {
-
-                    if( sidebarShown === false){
-                        mapColumns.classList.add('sidebar-shown');
-                        sidebarShown = true;
-                    }
-
-                    var id = L.Util.stamp(event.target);
-
-                    if (document.getElementById(id) != null) return;
-
-                    var sidebarElement = L.DomUtil.create('div', 'sidebarElement', document.getElementById('sidebar'));
-                    sidebarElement.id = id;
-                    
-                    var meetingDetail = L.DomUtil.create('div', 'meeting-detail' + ' ' + meeting.toLowerCase() + ' ' + 'border-bottom', sidebarElement);
-                    meetingDetail.innerHTML = contentSidebar;
-                    
-                    meetingDetail.setAttribute("tabindex", 0);
-
-                    meetingDetail.setAttribute("data-highlight", "true");
-
-                    setTimeout( function() {
-                        meetingDetail.setAttribute("data-highlight", "false");
-                    }, 2000)
-                    
-                    L.DomEvent.on( meetingDetail, 'click', function (event) {
-
-                        if( event.target.classList.contains('btn')) {
-                            event.preventDefault();
-                        } else {
-                            var marker = markerLayer.getLayer(this.id);
-                            marker.closePopup();
-                            map.panTo(marker.getLatLng());
-                            marker.bounce(2);
-                        }
-
-                    }, sidebarElement);
-                    
-                    var unpinMeeting = L.DomUtil.create('button', 'btn btn--icon-only', meetingDetail);
-                    
-                    unpinMeeting.innerHTML = '<span class="screen-reader-only">Remove</span>' +
-                                             '<span class="fas fa-times btn__icon"></span>';
-
-                    unpinMeeting.setAttribute("title", "Remove");
-                    
-                    L.DomEvent.on(unpinMeeting, 'click', function (event) {
-                        markerLayer.getLayer(this.id).closePopup();
-                        this.parentNode.removeChild(this);
-                    }, sidebarElement);
-                });
-            }
-
-            createMarker(
-                [40.641310, -74.075930],
-                openMeeting, 
-                "The Crossroads",
-                "26 Bay St,<br>Staten Island, NY<br>10301"
-            );
-
-            createMarker(
-                [40.628910, -74.114570],
-                closedMeeting, 
-                "Carl's House",
-                "471 Broadway,<br>Staten Island, NY<br>10301"
-            );
-
-            createMarker(
-                [40.632000, -74.132060],
-                closedMeeting, 
-                "Jaywalker Club",
-                "945 Post Ave,<br>Staten Island, NY<br>10302"
-            );
-
-            createMarker(
-                [40.639150, -74.076800],
-                openMeeting, 
-                "Project Hospitality Cafe",
-                "100 Central Ave,<br>Staten Island, NY<br>10301"
-            );
-
-            createMarker(
-                [40.533780, -74.189230],
-                openMeeting, 
-                "Steps to the Stars",
-                "5371 Amboy Rd,<br>Staten Island, NY<br>10312"
-            );
-
-
-            //var bounds = addedGeoJSON.getBounds();
-
-            //////////////////////////////////////////////
-            // B. Map Height
-            //////////////////////////////////////////////
-            
-            function setMapHeight() {
-                const windowHeight = window.innerHeight;
-
-                const mapColumnsPos = mapColumns.offsetTop;
-
-                if (window.matchMedia('( min-width: 960px)').matches) {
-                    mapColumns.style.height = windowHeight - mapColumnsPos + "px";
-                } else {
-                    return;
-                }
-
-            }
-
-            window.addEventListener('load', setMapHeight);
-            window.addEventListener('resize', setMapHeight);
-
-            const toggleColButton = document.querySelector('[data-toggle-column]');
-
-            toggleColButton.addEventListener('click', event => {
-
-                if( sidebarShown === false){
-                    mapColumns.classList.add("sidebar-shown");
-                    sidebarShown = true;
-                } else if ( sidebarShown === true) {
-                    mapColumns.classList.remove("sidebar-shown");
-                    sidebarShown = false;
-                }
-
-            });
-
-        </script>
 
     </body>
 
