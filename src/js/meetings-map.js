@@ -196,11 +196,13 @@ createMarker(
 
 window.addEventListener('resize', setMapHeight);
 
+//////////////////////////////////////////////
+// D. Custom Map Buttons
+//////////////////////////////////////////////
+
 const zoomInButton = document.querySelector('[data-map-zoom-in]');
 const zoomOutButton = document.querySelector('[data-map-zoom-out]');
 const toggleLocationButton = document.querySelector('[data-toggle-locations]');
-
-
 
 zoomInButton.addEventListener('click', function (event) {
     map.setZoom(map.getZoom() + 1)

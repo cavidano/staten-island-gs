@@ -92,7 +92,7 @@ p:not([class]) {
         position: relative;
         z-index: 15000;
         overflow-y: scroll;
-        
+
         grid-area: 'sidebar';
     }
     
@@ -167,19 +167,11 @@ a[class*="leaflet-control-zoom"]:focus {
         left: 0;
 
         transition: opacity 0.5s ease-in-out;
-    }
-
-
-    &.open::before{
-        background-color: var(--secondary);
-    }
-
-    &.closed::before{
-        background-color: #E07A5F;
+        background-color: var(--primary);
     }
 
     &[data-highlight="true"]::before {
-        opacity: 0.05;
+        opacity: 0.075;
     }
 
     &[data-highlight="false"]::before {
