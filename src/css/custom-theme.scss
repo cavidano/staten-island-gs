@@ -79,6 +79,7 @@ p:not([class]) {
 
     #map-view__map-container {
         position: relative;
+        z-index: 8000;
 
         grid-area: "map";
     }
@@ -87,7 +88,7 @@ p:not([class]) {
         position: absolute;
         top: var(--s1);
         left: var(--s1);
-        z-index: 1000;
+        z-index: 8500;
 
         button[disabled] {
             cursor: not-allowed;
@@ -97,7 +98,7 @@ p:not([class]) {
 
     #map-view__data-container {
         position: relative;
-        z-index: 9000;
+        z-index: 12000;
 
         grid-area: 'sidebar';
 
@@ -187,13 +188,14 @@ a[class*="leaflet-control-zoom"]:focus {
         right: 0;
         bottom: 0;
         left: 0;
+        z-index: -1;
 
         transition: opacity 0.5s ease-in-out;
-        background-color: var(--primary);
+        background-color: white;
     }
 
     &[data-highlight="true"]::before {
-        opacity: 0.075;
+        opacity: 1;
     }
 
     &[data-highlight="false"]::before {
@@ -261,7 +263,6 @@ a[class*="leaflet-control-zoom"]:focus {
     }
 
 }
-
 
 #map-loader { 
     height: 100%; 
