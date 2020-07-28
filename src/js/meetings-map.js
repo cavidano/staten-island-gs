@@ -11,19 +11,11 @@ let sidebarShown = false;
 //////////////////////////////////////////////
 
 function setMapHeight() {
-
     const windowHeight = window.innerHeight;
-
     const mapTargetPos = mapTarget.offsetTop;
-
     const adjustedHeight = windowHeight - mapTargetPos + "px";
-
-    if ( window.matchMedia('(min-width: 1000px)').matches ) {
-        mapTarget.style.height = adjustedHeight;
-    } else {
-        mapTarget.style.height = "300px";
-    }
-
+    
+    mapTarget.style.height = adjustedHeight;
 }
 
 setMapHeight();
@@ -98,7 +90,9 @@ function createMarker(
         meeting = 'Open';
     }
 
-    var contentPopUp = '<strong>' + meetingTitle + '</strong>';
+    var contentPopUp = '<strong class="text-primary">' + meetingTitle + '</strong>' + '<br>' + 
+                       'Cool Time' + '<br>' + 
+                       'Cool Information' + '<br>';
 
     var contentSidebar = '<p class="meeting__title">' + meetingTitle + '</p>' +
                          '<p class="meeting__type">' + meeting + ' Discussion' + '</p>' +

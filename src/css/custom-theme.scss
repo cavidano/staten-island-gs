@@ -67,8 +67,6 @@ p:not([class]) {
 
 #map-view{
     --map-max-size: 350px;
-
-    height: 300px;
     
     display: grid;
 
@@ -77,10 +75,6 @@ p:not([class]) {
         "sidebar";
         
     grid-template-rows: 1fr 0;
-
-    &.data-shown {
-       grid-template-rows: 3fr 1fr; 
-    }
 
     #map-view__map-container {
         position: relative;
