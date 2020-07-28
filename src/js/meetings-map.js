@@ -26,7 +26,7 @@ setMapHeight();
 
 var map = L.map('map-loader', {
     center: [40.5795, -74.1502],
-    setZoom: 12,
+    setZoom: 14,
     minZoom: 8,
     maxZoom: 16,
     scrollWheelZoom: false,
@@ -59,7 +59,7 @@ siGeo.on('data:loaded', function() {
 });
 
 function centerMap(myBounds){
-    map.fitBounds(myBounds.getBounds(), { padding: [40, 40] });
+    map.fitBounds(myBounds.getBounds(), { padding: [20, 20] });
 }
 
 // Custom popup options
@@ -91,9 +91,8 @@ function createMarker(
         meeting = 'Open';
     }
 
-    var contentPopUp = '<strong class="text-primary">' + meetingTitle + '</strong>' + '<br>' + 
-                       'Cool Time' + '<br>' + 
-                       'Cool Information' + '<br>';
+    var contentPopUp = '<a href="#1" class="text-primary"><strong>' + meetingTitle + '</strong></a>' + 
+                       '<p class="meeting__address">' + meetingAddress + '</p>';
 
     var contentSidebar = '<p class="meeting__title">' + meetingTitle + '</p>' +
                          '<p class="meeting__type">' + meeting + ' Discussion' + '</p>' +
@@ -110,18 +109,15 @@ function createMarker(
     function watchMediaQuery(event) {
 
         if (event.matches) {
-            /* the viewport is 1000 pixels wide or less */
-            document.body.style.backgroundColor = 'red';
             return;
         } else {
-            /* the viewport is more than than 1000 pixels wide */
-            document.body.style.backgroundColor = 'blue';
 
             marker.on('click', function (event) {
 
                 if (sidebarShown === false) {
                     mapTarget.classList.add('data-shown');
                     sidebarShown = true;
+                    map.invalidateSize(true);
                 }
 
                 var id = L.Util.stamp(event.target);
@@ -159,11 +155,11 @@ function createMarker(
                 var unpinMeeting = L.DomUtil.create('button', 'btn btn--icon-only', meetingDetail);
                 
                 unpinMeeting.innerHTML = '<span class="screen-reader-only">Remove</span>' +
-                                            '<span class="fas fa-times btn__icon"></span>';
+                                         '<span class="fas fa-times btn__icon"></span>';
 
                 unpinMeeting.setAttribute("title", "Remove");
                 
-                L.DomEvent.on(unpinMeeting, 'click', function (event) {
+                L.DomEvent.on(unpinMeeting, 'click', function () {
                     markerLayer.getLayer(this.id).closePopup();
                     this.parentNode.removeChild(this);
                 }, dataLoader);
@@ -173,52 +169,42 @@ function createMarker(
 
     watchMediaQuery(mediaQuery);
     mediaQuery.addListener(watchMediaQuery);
-
 }
 
 createMarker(
     [40.641310, -74.075930],
     openMeeting, 
     "The Crossroads",
-    "26 Bay St,<br>Staten Island, NY<br>10301"
+    "26 Bay St,<br>Staten Island, NY 10301"
 );
 
 createMarker(
     [40.628910, -74.114570],
     closedMeeting, 
     "Carl's House",
-    "471 Broadway,<br>Staten Island, NY<br>10301"
+    "471 Broadway,<br>Staten Island, NY 10301"
 );
 
 createMarker(
     [40.632000, -74.132060],
     closedMeeting, 
     "Jaywalker Club",
-    "945 Post Ave,<br>Staten Island, NY<br>10302"
+    "945 Post Ave,<br>Staten Island, NY 10302"
 );
 
 createMarker(
     [40.639150, -74.076800],
     openMeeting, 
     "Project Hospitality Cafe",
-    "100 Central Ave,<br>Staten Island, NY<br>10301"
+    "100 Central Ave,<br>Staten Island, NY 10301"
 );
 
 createMarker(
     [40.533780, -74.189230],
     openMeeting, 
     "Steps to the Stars",
-    "5371 Amboy Rd,<br>Staten Island, NY<br>10312"
+    "5371 Amboy Rd,<br>Staten Island, NY 10312"
 );
-
-    function setMarkerClick(){
-        if (window.matchMedia('min-width: 1000px')) {
-            console.log("SMALL");
-        } else {
-            console.log("DESKTOP");
-        }
-    }
-
 
 window.addEventListener('resize', setMapHeight);
 
