@@ -61,6 +61,7 @@ siGeo.on('data:loaded', function() {
 function centerMap(myBounds){
     map.fitBounds(myBounds.getBounds(), { padding: [40, 40] });
 }
+
 // Custom popup options
 
 var markerOptions = {
@@ -86,7 +87,7 @@ function createMarker(
 
     if( meetingType === closedMeeting ){
         meeting = 'Closed';
-    } else if(meetingType === openMeeting) {
+    } else if ( meetingType === openMeeting ) {
         meeting = 'Open';
     }
 
@@ -102,56 +103,77 @@ function createMarker(
     
     marker.bindPopup(contentPopUp);
 
-    marker.on('click', function (event) {
+    // Desktop Marker Functionality
 
-        if( sidebarShown === false){
-            mapTarget.classList.add('data-shown');
-            sidebarShown = true;
+    var mediaQuery = window.matchMedia('( max-width: 1000px )');
+
+    function watchMediaQuery(event) {
+
+        if (event.matches) {
+            /* the viewport is 1000 pixels wide or less */
+            document.body.style.backgroundColor = 'red';
+            return;
+        } else {
+            /* the viewport is more than than 1000 pixels wide */
+            document.body.style.backgroundColor = 'blue';
+
+            marker.on('click', function (event) {
+
+                if (sidebarShown === false) {
+                    mapTarget.classList.add('data-shown');
+                    sidebarShown = true;
+                }
+
+                var id = L.Util.stamp(event.target);
+
+                if (document.getElementById(id) != null) return;
+
+                var dataLoader = L.DomUtil.create('div', 'dataLoader', document.getElementById('data-loader'));
+
+                dataLoader.id = id;
+                
+                var meetingDetail = L.DomUtil.create('div', 'meeting-detail' + ' ' + meeting.toLowerCase() + ' ' + 'border-bottom', dataLoader);
+                meetingDetail.innerHTML = contentSidebar;
+                
+                meetingDetail.setAttribute("tabindex", 0);
+
+                meetingDetail.setAttribute("data-highlight", "true");
+
+                setTimeout( function() {
+                    meetingDetail.setAttribute("data-highlight", "false");
+                }, 2000)
+                
+                L.DomEvent.on( meetingDetail, 'click', function (event) {
+
+                    if( event.target.classList.contains('btn')) {
+                        event.preventDefault();
+                    } else {
+                        var marker = markerLayer.getLayer(this.id);
+                        marker.closePopup();
+                        map.panTo(marker.getLatLng());
+                        marker.bounce(2);
+                    }
+
+                }, dataLoader);
+                
+                var unpinMeeting = L.DomUtil.create('button', 'btn btn--icon-only', meetingDetail);
+                
+                unpinMeeting.innerHTML = '<span class="screen-reader-only">Remove</span>' +
+                                            '<span class="fas fa-times btn__icon"></span>';
+
+                unpinMeeting.setAttribute("title", "Remove");
+                
+                L.DomEvent.on(unpinMeeting, 'click', function (event) {
+                    markerLayer.getLayer(this.id).closePopup();
+                    this.parentNode.removeChild(this);
+                }, dataLoader);
+            });
         }
+    }
 
-        var id = L.Util.stamp(event.target);
+    watchMediaQuery(mediaQuery);
+    mediaQuery.addListener(watchMediaQuery);
 
-        if (document.getElementById(id) != null) return;
-
-        var dataLoader = L.DomUtil.create('div', 'dataLoader', document.getElementById('data-loader'));
-        dataLoader.id = id;
-        
-        var meetingDetail = L.DomUtil.create('div', 'meeting-detail' + ' ' + meeting.toLowerCase() + ' ' + 'border-bottom', dataLoader);
-        meetingDetail.innerHTML = contentSidebar;
-        
-        meetingDetail.setAttribute("tabindex", 0);
-
-        meetingDetail.setAttribute("data-highlight", "true");
-
-        setTimeout( function() {
-            meetingDetail.setAttribute("data-highlight", "false");
-        }, 2000)
-        
-        L.DomEvent.on( meetingDetail, 'click', function (event) {
-
-            if( event.target.classList.contains('btn')) {
-                event.preventDefault();
-            } else {
-                var marker = markerLayer.getLayer(this.id);
-                marker.closePopup();
-                map.panTo(marker.getLatLng());
-                marker.bounce(2);
-            }
-
-        }, dataLoader);
-        
-        var unpinMeeting = L.DomUtil.create('button', 'btn btn--icon-only', meetingDetail);
-        
-        unpinMeeting.innerHTML = '<span class="screen-reader-only">Remove</span>' +
-                                    '<span class="fas fa-times btn__icon"></span>';
-
-        unpinMeeting.setAttribute("title", "Remove");
-        
-        L.DomEvent.on(unpinMeeting, 'click', function (event) {
-            markerLayer.getLayer(this.id).closePopup();
-            this.parentNode.removeChild(this);
-        }, dataLoader);
-    });
 }
 
 createMarker(
@@ -188,6 +210,15 @@ createMarker(
     "Steps to the Stars",
     "5371 Amboy Rd,<br>Staten Island, NY<br>10312"
 );
+
+    function setMarkerClick(){
+        if (window.matchMedia('min-width: 1000px')) {
+            console.log("SMALL");
+        } else {
+            console.log("DESKTOP");
+        }
+    }
+
 
 window.addEventListener('resize', setMapHeight);
 
