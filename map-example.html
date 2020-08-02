@@ -124,18 +124,11 @@
                 }
             });
 
-            var customIcon = new Icon( { iconUrl: myPath + '/images/map-pin-closed.svg'} );
+            // Set Custom Icon URL
 
-            var marker = L.marker([40.629742, -74.116096], { icon: customIcon }).addTo(map);
+            var mapPin = new Icon( { iconUrl: myPath + '/images/map-pin-closed.svg' } );
 
-            // Example Polygon
-
-            var circle = L.circle([40.629742, -74.116096], {
-                color: 'var(--secondary)',
-                fillColor: 'var(--secondary)',
-                fillOpacity: 0.5,
-                radius: 3
-            }).addTo(map);
+            var marker = L.marker([40.629742, -74.116096], { icon: mapPin }).addTo(map);
 
             // Load External Json and Place it on the map
 
@@ -143,11 +136,39 @@
                 color: 'var(--secondary)',
                 fillColor: 'var(--secondary)',
                 fillOpacity: 0.5,
+                stroke: true,
+                weight: 1,
+                dashArray: '',
             }).addTo(map);
 
-            siGeo.bindPopup(function (layer) {
-            return layer.feature.properties.neighborhood;
-            });
+            // siGeo.bindTooltip(function (layer) {
+                // return layer.feature.properties.neighborhood;
+            // });
+            
+                var coolWhoa = 'https://spreadsheets.google.com/feeds/cells/18q9JqQbP_d8_27c9yePyixkhFsUAiJ9yOlkhTmfu-v4/1/public/full?alt=json';
+
+
+                fetch(coolWhoa).then( function(response) {
+
+                    return response.json();
+
+                }).then( function (obj){
+
+                    const myObject = obj.feed;
+
+                    const colCount = Number.parseInt(myObject.gs$colCount.$t);
+                    const rowCount = Number.parseInt(myObject.gs$rowCount.$t);
+
+                    console.log(colCount);
+                    console.log(rowCount);
+
+                    console.log(myObject.entry[colCount].content.$t);
+
+                    
+
+                }).catch(function (error){
+
+                });
 
 
         </script>

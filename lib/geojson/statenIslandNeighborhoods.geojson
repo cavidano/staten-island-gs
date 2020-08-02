@@ -5,8 +5,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Arden Heights",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -220,8 +219,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Arlington",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -331,8 +329,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Arrochar",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -482,8 +479,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Bay Terrace",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -633,8 +629,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Bloomfield",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -1060,8 +1055,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Bull's Head",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -1351,8 +1345,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Castleton Corners",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -1538,8 +1531,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Charleston",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -2353,8 +2345,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Chelsea",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -2756,8 +2747,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Clifton",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -2967,8 +2957,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Concord",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -3126,8 +3115,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Dongan Hills",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -3349,8 +3337,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Eltingville",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -3712,8 +3699,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Emerson Hill",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -3875,8 +3861,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Fort Wadsworth",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -4178,8 +4163,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Freshkills Park",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -4877,8 +4861,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Graniteville",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -4972,8 +4955,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Grant City",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -5039,8 +5021,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Great Kills",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -6586,8 +6567,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Great Kills Park",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -7477,8 +7457,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Grymes Hill",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -7644,8 +7623,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Hoffman Island",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -7695,8 +7673,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Howland Hook",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -7866,8 +7843,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Huguenot",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -8225,8 +8201,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Latourette Park",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -8732,8 +8707,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Lighthouse Hill",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -8951,8 +8925,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Mariners Harbor",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -9818,8 +9791,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Midland Beach",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -9965,8 +9937,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "New Brighton",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -10068,8 +10039,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "New Dorp",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -10227,8 +10197,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "New Dorp Beach",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -10434,8 +10403,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "New Springville",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -10597,8 +10565,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Oakwood",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -10864,8 +10831,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Park Hill",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -10995,8 +10961,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Pleasant Plains",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -11290,8 +11255,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Port Ivory",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -13389,8 +13353,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Port Richmond",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -13648,8 +13611,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Prince's Bay",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -13999,8 +13961,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Randall Manor",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -15078,8 +15039,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Richmondtown",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -15233,8 +15193,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Rosebank",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -15500,8 +15459,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Rossville",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -15731,8 +15689,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Shore Acres",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -15966,8 +15923,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Silver Lake",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -16125,8 +16081,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "South Beach",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -16580,8 +16535,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "St. George",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -17379,8 +17333,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Stapleton",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -17630,8 +17583,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Todt Hill",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -17885,8 +17837,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Tompkinsville",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -18080,8 +18031,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Tottenville",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -19159,8 +19109,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "West Brighton",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -19294,8 +19243,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Westerleigh",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -19369,8 +19317,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Willowbrook",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -19536,8 +19483,7 @@
       "type": "Feature",
       "properties": {
         "neighborhood": "Woodrow",
-        "boroughCode": "5",
-        "borough": "Staten Island"
+        "boroughCode": "5"
       },
       "geometry": {
         "type": "Polygon",
