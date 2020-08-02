@@ -154,20 +154,36 @@
 
                 }).then( function (obj){
 
+                    const categoryArray = new Array();
+
                     const myObject = obj.feed;
 
                     const colCount = Number.parseInt(myObject.gs$colCount.$t);
-                    const rowCount = Number.parseInt(myObject.gs$rowCount.$t);
+                    const rowCount = Number.parseInt(myObject.gs$rowCount.$t) -1;
 
                     console.log(colCount);
                     console.log(rowCount);
 
-                    console.log(myObject.entry[colCount].content.$t);
+                    console.log(myObject);
 
-                    
+
+                    for(i = 0; i<=colCount; i+=colCount ){
+                        console.log("........................");
+
+                        for (n=0; n<=colCount; n+=1){
+                            //console.log(i + n);
+                            console.log(myObject.entry[i + n].content.$t);
+                        }
+                    }
 
                 }).catch(function (error){
+/*
 
+
+                        for (n=0; n<colCount; n+=1){
+                            console.log(n);
+                        }
+*/
                 });
 
 
