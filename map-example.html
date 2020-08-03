@@ -84,6 +84,9 @@
 
         <!-- NYC Core Javascript -->
         <script src="https://cdn.jsdelivr.net/gh/CityOfNewYork/nyc-core-framework@new-version/dist/js/nyc_core.js"></script>
+        
+        <!-- Google Sheets API -->
+        <script src="https://apis.google.com/js/api.js"></script>
 
         <!-- Leaflet JS -->
         <script src="./lib/js/leaflet.js"></script>
@@ -91,7 +94,11 @@
         <script src="./lib/js/leaflet.smoothmarkerbouncing.js"></script>
         <script src="./lib/js/leaflet.ajax.min.js"></script>
 
-        <script src="https://apis.google.com/js/api.js"></script>
+        <!-- Geolocation Plugin -->
+        <script src="./lib/js/esri-leaflet-v2.4.1.js"></script>
+        <script src="./lib/js/esri-leaflet-geocoder-v2.3.3.js"></script>
+
+
         
 
         <script>
@@ -144,10 +151,9 @@
                 dashArray: '',
             }).addTo(map);
 
-            siGeo.bindPopup(function (layer) {
-                return layer.feature.properties.neighborhood;
-            });
-
+//            siGeo.bindPopup(function (layer) {
+//                return layer.feature.properties.neighborhood;
+//            });
 
             function init() {
                 gapi.client.init({
@@ -165,22 +171,33 @@
                     // Create Column Headers Array
                     for (const columnHeader of response.result.values[0]) {
                         columnHeaderList.push(columnHeader);
-                        console.log(columnHeader)
                     }
-
 
                     let addressIndex = columnHeaderList.indexOf('locationStreetAddress');
                     let zipCodeIndex = columnHeaderList.indexOf('locationZipCode');
 
                     console.log(addressIndex, zipCodeIndex);
 
+                    let cityState = 'Staten Island, NY';
+
                     for (const locationData of response.result.values) {
 
-                        console.log('••••••••••••••••••••••••••••••••••••••');
+//                        console.log('••••••••••••••••••••••••••••••••••••••');
+
+                        let locationAddress = locationData[addressIndex] + ' ' + cityState + ' ' + locationData[zipCodeIndex];
                         
-                        console.log(locationData);
-                        console.log(locationData[addressIndex]);
-                        console.log(locationData[zipCodeIndex]);
+//                        console.log(locationAddress);
+
+                        L.esri.Geocoding.geocode().address(locationAddress).run((err, results, response) => {
+                            
+                            if (err) {
+                                return;
+                            } else {
+                                coords = results.results[0].latlng;
+                            }
+
+                            marker = L.marker(coords, { icon: mapPin }).addTo(map);
+                        });
                     }
 
                 }, function(reason) {
