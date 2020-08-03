@@ -91,6 +91,9 @@
         <script src="./lib/js/leaflet.smoothmarkerbouncing.js"></script>
         <script src="./lib/js/leaflet.ajax.min.js"></script>
 
+        <script src="https://apis.google.com/js/api.js"></script>
+        
+
         <script>
 
             // Create Map Instance
@@ -141,51 +144,51 @@
                 dashArray: '',
             }).addTo(map);
 
-            // siGeo.bindTooltip(function (layer) {
-                // return layer.feature.properties.neighborhood;
-            // });
-            
-                var coolWhoa = 'https://spreadsheets.google.com/feeds/cells/18q9JqQbP_d8_27c9yePyixkhFsUAiJ9yOlkhTmfu-v4/1/public/full?alt=json';
+            siGeo.bindPopup(function (layer) {
+                return layer.feature.properties.neighborhood;
+            });
 
 
-                fetch(coolWhoa).then( function(response) {
+            function init() {
+                gapi.client.init({
+                    'apiKey': 'AIzaSyAa12ysdSNieKzVAb_jsAy_pV6gH9phlOs',
+                }).then(function() {
+                    return gapi.client.request({
+                        'path': 'https://sheets.googleapis.com/v4/spreadsheets/18q9JqQbP_d8_27c9yePyixkhFsUAiJ9yOlkhTmfu-v4/values/sigsMeetingList',
+                    })
+                }).then(function(response) {
 
-                    return response.json();
+                    console.log(response.result);
 
-                }).then( function (obj){
+                    const columnHeaderList = new Array();
 
-                    const categoryArray = new Array();
-
-                    const myObject = obj.feed;
-
-                    const colCount = Number.parseInt(myObject.gs$colCount.$t);
-                    const rowCount = Number.parseInt(myObject.gs$rowCount.$t) -1;
-
-                    console.log(colCount);
-                    console.log(rowCount);
-
-                    console.log(myObject);
-
-
-                    for(i = 0; i<=colCount; i+=colCount ){
-                        console.log("........................");
-
-                        for (n=0; n<=colCount; n+=1){
-                            //console.log(i + n);
-                            console.log(myObject.entry[i + n].content.$t);
-                        }
+                    // Create Column Headers Array
+                    for (const columnHeader of response.result.values[0]) {
+                        columnHeaderList.push(columnHeader);
+                        console.log(columnHeader)
                     }
 
-                }).catch(function (error){
-/*
 
+                    let addressIndex = columnHeaderList.indexOf('locationStreetAddress');
+                    let zipCodeIndex = columnHeaderList.indexOf('locationZipCode');
 
-                        for (n=0; n<colCount; n+=1){
-                            console.log(n);
-                        }
-*/
+                    console.log(addressIndex, zipCodeIndex);
+
+                    for (const locationData of response.result.values) {
+
+                        console.log('••••••••••••••••••••••••••••••••••••••');
+                        
+                        console.log(locationData);
+                        console.log(locationData[addressIndex]);
+                        console.log(locationData[zipCodeIndex]);
+                    }
+
+                }, function(reason) {
+                    console.log('Error: ' + reason.result.error.message);
                 });
+            };
 
+            gapi.load('client', init);
 
         </script>
 
