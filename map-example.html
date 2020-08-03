@@ -98,10 +98,10 @@
         <script src="./lib/js/esri-leaflet-v2.4.1.js"></script>
         <script src="./lib/js/esri-leaflet-geocoder-v2.3.3.js"></script>
 
+        <!-- Make sure you put this AFtER leaflet.js, when using with leaflet -->
+        <script src="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.umd.js"></script>
 
-        
-
-        <script>
+        <script defer>
 
             // Create Map Instance
 
@@ -138,8 +138,6 @@
 
             var mapPin = new Icon( { iconUrl: myPath + '/images/map-pin-closed.svg' } );
 
-            var marker = L.marker([40.629742, -74.116096], { icon: mapPin }).addTo(map);
-
             // Load External Json and Place it on the map
 
             var siGeo = new L.GeoJSON.AJAX('./lib/geojson/statenIslandNeighborhoods.geojson', {
@@ -149,7 +147,7 @@
                 stroke: true,
                 weight: 1,
                 dashArray: '',
-            }).addTo(map);
+            });
 
 //            siGeo.bindPopup(function (layer) {
 //                return layer.feature.properties.neighborhood;
@@ -182,11 +180,8 @@
 
                     for (const locationData of response.result.values) {
 
-//                        console.log('••••••••••••••••••••••••••••••••••••••');
-
                         let locationAddress = locationData[addressIndex] + ' ' + cityState + ' ' + locationData[zipCodeIndex];
                         
-//                        console.log(locationAddress);
 
                         L.esri.Geocoding.geocode().address(locationAddress).run((err, results, response) => {
                             
@@ -198,6 +193,7 @@
 
                             marker = L.marker(coords, { icon: mapPin }).addTo(map);
                         });
+
                     }
 
                 }, function(reason) {
