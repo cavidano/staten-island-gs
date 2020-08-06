@@ -98,7 +98,7 @@
         <script src="./lib/js/esri-leaflet-v2.4.1.js"></script>
         <script src="./lib/js/esri-leaflet-geocoder-v2.3.3.js"></script>
 
-        <!-- Make sure you put this AFtER leaflet.js, when using with leaflet -->
+        <!-- Make sure you put this AftER leaflet.js, when using with leaflet -->
         <script src="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.umd.js"></script>
 
         <script defer>
@@ -110,7 +110,6 @@
             // Add Tile Layer
 
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                maxZoom: 24,
                 id: 'mapbox/streets-v11',
                 tileSize: 512,
                 zoomOffset: -1,
