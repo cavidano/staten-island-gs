@@ -17,22 +17,19 @@ function init() {
         // Create Columns Array
         let columnHeaderList = [];
 
+        // let columnHeaderIndex = new Map();
+
         // Create Column Headers Array
-        for (const columnHeader of response.result.values[0]) {
+        for (const columnHeader of dataList[0]) {
             columnHeaderList.push(columnHeader);
+            // columnHeaderIndex.set( columnHeader.toString() + 'Index', columnHeaderList.indexOf(columnHeader.toString()));
         }
 
         // Print Column Headers Array
         console.log("columnHeaderList:", columnHeaderList);
 
         // Create Index Value Relationship
-        const locationAddressIndex = columnHeaderList.indexOf('locationAddress');
-        const locationNameIndex = columnHeaderList.indexOf('locationName');
-        const meetingNameIndex = columnHeaderList.indexOf('meetingName');
-        const meetingWeekdayIndex = columnHeaderList.indexOf('meetingWeekday');
-        const meetingStartTimeIndex = columnHeaderList.indexOf('meetingStartTime');
-        const meetingEndTimeIndex = columnHeaderList.indexOf('meetingEndTime');
-        const meetingTypeIndex = columnHeaderList.indexOf('meetingType');
+        // console.log("columnHeaderIndex:", columnHeaderIndex.get("meetingWeekdayIndex"));
 
         let i = 0;
 
@@ -47,15 +44,23 @@ function init() {
                 // Populate Object Prototype
                 if (Object.keys(meeting).length === 0) {
 
-                    meeting = {
-                        locationAddress: dataRow[locationAddressIndex],
-                        locationName: dataRow[locationNameIndex],
-                        meetingName: dataRow[meetingNameIndex],
-                        meetingWeekday: dataRow[meetingWeekdayIndex],
-                        meetingStartTime: dataRow[meetingStartTimeIndex],
-                        meetingEndTime: dataRow[meetingEndTimeIndex],
-                        meetingType: dataRow[meetingTypeIndex],
-                    }
+                    columnHeaderList.forEach((key, index) => {
+                        meeting[key] = dataRow[index];
+                    });
+
+                    console.log("Meeting Object...", meeting);
+
+
+
+                    // meeting = {
+                        // locationAddress: dataRow[locationAddressIndex],
+                        // locationName: dataRow[locationNameIndex],
+                        // meetingName: dataRow[meetingNameIndex],
+                        // meetingWeekday: dataRow[meetingWeekdayIndex],
+                        // meetingStartTime: dataRow[meetingStartTimeIndex],
+                        // meetingEndTime: dataRow[meetingEndTimeIndex],
+                        // meetingType: dataRow[meetingTypeIndex],
+                    // }
 
                 }
 

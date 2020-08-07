@@ -1,18 +1,12 @@
-var userInfo = {
-    name: "Mayank",
-    age: 30,
-    salary: 10000,
-    designation: "Developer",
-    getData: function () {
-        return this.name;
-    }
-}
+let myMap = new Map()
 
-var newObject = Object.create(userInfo);
+let keyString = 'a string'
+let keyObj = {}
+let keyFunc = function () {}
 
-var newObject = Object.create(userInfo);
+// setting the values
+myMap.set(keyString, "value associated with 'a string'")
+myMap.set(keyObj, 'value associated with keyObj')
+myMap.set(keyFunc, 'value associated with keyFunc')
 
-newObject.name = "Other Name";
-
-console.log(newObject)
-// console.log(newObject.getData());
+myMap.size // 3
