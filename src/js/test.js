@@ -39,11 +39,9 @@ function init() {
 
                 // Populate Object Prototype
                 if (Object.keys(rowItemParent).length === 0) {
-
                     columnHeaderList.forEach((key, index) => {
                         rowItemParent[key] = dataRow[index];
                     });
-
                 }
             
                 const rowItem = Object.create(rowItemParent);
@@ -66,13 +64,15 @@ function init() {
         }
 
         console.log("itemContainer:", itemContainer);
-
+                     
         const items = itemContainer;
 
         for (const item of items) {
-            // console.log("Item...", item);
-            console.log("Values...", Object.values(item));            
+            console.log("Item...", item);
+            // console.log("Keys and Values...", Object.keys(item), Object.values(item));
         }
+
+        console.log(items[9][4]);
 
     }, function (reason) {
         console.log('Error: ' + reason.result.error.message);
