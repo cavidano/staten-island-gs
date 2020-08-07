@@ -42,37 +42,18 @@ function init() {
                         meeting[key] = dataRow[index];
                     });
 
-                    console.log("Meeting Object...", meeting);
-                    
                 }
+            
+                console.log("Meeting...", meeting);
 
-                console.log("meeting list...", Object.entries(meeting));
+                meeting = Object.create(meeting);
 
-                // console.log('Data Row...');
-                // console.log(i, dataRow);
-                // console.log('Data Cell...');
-                
-                // let n = 0;
+                meeting.meetingName = "Cool";
 
-                // for (let dataCell of dataRow) {
-
-                //     console.log(dataCell);
-                //     n++;
-                // } 
-
-                // const meeting = new Meeting(
-                //     dataRow[locationAddressIndex],
-                //     dataRow[locationNameIndex],
-                //     dataRow[meetingNameIndex],
-                //     dataRow[meetingWeekdayIndex],
-                //     dataRow[meetingStartTimeIndex],
-                //     dataRow[meetingEndTimeIndex],
-                //     dataRow[meetingTypeIndex],
-                // );
-                
-                // console.log("My new Meeting...", meeting);
+                console.log("Meeting...", meeting);
             }
-
+            
+            
             i++;
         }
 
@@ -82,27 +63,3 @@ function init() {
 };
 
 gapi.load('client', init);
-
-//////////////////////////////////////////////
-// B. Create Meeting Objects
-//////////////////////////////////////////////
-
-class Meeting {
-    constructor(
-        locationAddress,
-        locationName,
-        meetingName,
-        meetingWeekday,
-        meetingStartTime,
-        meetingEndTime,
-        meetingType
-    ) {
-        this.locationAddress = locationAddress;
-        this.locationName = locationName;
-        this.meetingName = meetingName;
-        this.meetingWeekday = meetingWeekday;
-        this.meetingStartTime = meetingStartTime;
-        this.meetingEndTime = meetingEndTime;
-        this.meetingType = meetingType;
-    }
-}
