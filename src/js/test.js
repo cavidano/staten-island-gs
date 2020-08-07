@@ -55,11 +55,11 @@ function init() {
                     if(dataCell !== ""){
                         rowItem[n] = dataRow[n];
                     }
+
                     n++;
                 }
 
                 itemContainer.push(rowItem);
-
             }
 
             i++;
@@ -70,8 +70,8 @@ function init() {
         const items = itemContainer;
 
         for (const item of items) {
-            console.log("Item...", item);
-            console.log("Keys...", Object.keys(item));
+            // console.log("Item...", item);
+            console.log("Values...", Object.values(item));            
         }
 
     }, function (reason) {
