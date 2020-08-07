@@ -31,7 +31,7 @@ function init() {
 
         let rowItemParent = new Object();
 
-        // Create Column Headers Array
+        // Print Data Rows
         for (const dataRow of dataList) {
 
             // Get All Rows Excluding Column Headers
@@ -47,13 +47,12 @@ function init() {
                 const rowItem = Object.create(rowItemParent);
 
                 let n = 0;
-
-                console.log("rowItem", rowItem)
       
                 for (const dataCell of dataRow) {
 
                     if(dataCell !== ""){
-                        rowItem[n]  = dataRow[n];
+                        rowItem[columnHeaderList[n]] = dataRow[n];
+                        // console.log("Row Updated To...", rowItem[columnHeaderList[n]], dataRow[n]);
                     }
 
                     n++;
@@ -65,16 +64,13 @@ function init() {
             i++;
         }
 
-        console.log("itemContainer:", itemContainer);
+        console.log("itemContainer:", itemContainer[0]);
                      
         const items = itemContainer;
 
         for (const item of items) {
             console.log("Item...", item);
-            // console.log("Keys and Values...", Object.keys(item), Object.values(item));
         }
-
-        console.log(items[9][4]);
 
     }, function (reason) {
         console.log('Error: ' + reason.result.error.message);
