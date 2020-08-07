@@ -47,11 +47,13 @@ function init() {
                 const rowItem = Object.create(rowItemParent);
 
                 let n = 0;
+
+                console.log("rowItem", rowItem)
       
                 for (const dataCell of dataRow) {
 
                     if(dataCell !== ""){
-                        rowItem[n] = dataRow[n];
+                        rowItem[n]  = dataRow[n];
                     }
 
                     n++;
