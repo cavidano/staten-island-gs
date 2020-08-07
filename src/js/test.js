@@ -44,16 +44,21 @@ function init() {
 
                 }
             
-                console.log("Meeting...", meeting);
-
                 meeting = Object.create(meeting);
 
-                meeting.meetingName = "Cool";
+                let n = 0;
+      
+                for (const dataCell of dataRow) {
 
-                console.log("Meeting...", meeting);
+                    if(dataCell !== ""){
+                        meeting[n] = dataRow[n];
+                    }
+                    n++;
+                }
             }
             
-            
+            console.log("Meeting...", meeting);
+
             i++;
         }
 
