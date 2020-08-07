@@ -52,7 +52,6 @@ function init() {
 
                     if(dataCell !== ""){
                         rowItem[columnHeaderList[n]] = dataRow[n];
-                        // console.log("Row Updated To...", rowItem[columnHeaderList[n]], dataRow[n]);
                     }
 
                     n++;
@@ -68,9 +67,9 @@ function init() {
                      
         const items = itemContainer;
 
-        for (const item of items) {
-            console.log("Item...", item);
-        }
+        var myJSON = JSON.stringify(items);
+
+        console.log(myJSON);
 
     }, function (reason) {
         console.log('Error: ' + reason.result.error.message);
