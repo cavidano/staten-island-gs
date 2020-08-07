@@ -27,7 +27,9 @@ function init() {
 
         let i = 0;
 
-        let meeting = {};
+        let itemContainer = new Array();
+
+        let rowItemParent = new Object();
 
         // Create Column Headers Array
         for (const dataRow of dataList) {
@@ -36,30 +38,40 @@ function init() {
             if (dataRow[0] !== columnHeaderList[0]) {
 
                 // Populate Object Prototype
-                if (Object.keys(meeting).length === 0) {
+                if (Object.keys(rowItemParent).length === 0) {
 
                     columnHeaderList.forEach((key, index) => {
-                        meeting[key] = dataRow[index];
+                        rowItemParent[key] = dataRow[index];
                     });
 
                 }
             
-                meeting = Object.create(meeting);
+                const rowItem = Object.create(rowItemParent);
 
                 let n = 0;
       
                 for (const dataCell of dataRow) {
 
                     if(dataCell !== ""){
-                        meeting[n] = dataRow[n];
+                        rowItem[n] = dataRow[n];
                     }
                     n++;
                 }
+
+                itemContainer.push(rowItem);
+
             }
-            
-            console.log("Meeting...", meeting);
 
             i++;
+        }
+
+        console.log("itemContainer:", itemContainer);
+
+        const items = itemContainer;
+
+        for (const item of items) {
+            console.log("Item...", item);
+            console.log("Keys...", Object.keys(item));
         }
 
     }, function (reason) {
