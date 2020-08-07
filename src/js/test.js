@@ -23,8 +23,9 @@ function init() {
         }
 
         // Print Column Headers Array
-        // console.log("columnHeaderList:", columnHeaderList);
+        console.log("columnHeaderList:", columnHeaderList);
 
+        // Create Index Value Relationship
         const locationAddressIndex = columnHeaderList.indexOf('locationAddress');
         const locationNameIndex = columnHeaderList.indexOf('locationName');
         const meetingNameIndex = columnHeaderList.indexOf('meetingName');
@@ -35,11 +36,30 @@ function init() {
 
         let i = 0;
 
+        let meeting = {};
+
         // Create Column Headers Array
         for (const dataRow of dataList) {
 
             // Get All Rows Excluding Column Headers
             if (dataRow[0] !== columnHeaderList[0]) {
+
+                // Populate Object Prototype
+                if (Object.keys(meeting).length === 0) {
+
+                    meeting = {
+                        locationAddress: dataRow[locationAddressIndex],
+                        locationName: dataRow[locationNameIndex],
+                        meetingName: dataRow[meetingNameIndex],
+                        meetingWeekday: dataRow[meetingWeekdayIndex],
+                        meetingStartTime: dataRow[meetingStartTimeIndex],
+                        meetingEndTime: dataRow[meetingEndTimeIndex],
+                        meetingType: dataRow[meetingTypeIndex],
+                    }
+
+                }
+
+                console.log("meeting list...", Object.entries(meeting));
 
                 // console.log('Data Row...');
                 // console.log(i, dataRow);
@@ -48,21 +68,22 @@ function init() {
                 // let n = 0;
 
                 // for (let dataCell of dataRow) {
+
                 //     console.log(dataCell);
                 //     n++;
                 // } 
 
-                const meeting = new Meeting(
-                    dataRow[locationAddressIndex],
-                    dataRow[locationNameIndex],
-                    dataRow[meetingNameIndex],
-                    dataRow[meetingWeekdayIndex],
-                    dataRow[meetingStartTimeIndex],
-                    dataRow[meetingEndTimeIndex],
-                    dataRow[meetingTypeIndex],
-                );
+                // const meeting = new Meeting(
+                //     dataRow[locationAddressIndex],
+                //     dataRow[locationNameIndex],
+                //     dataRow[meetingNameIndex],
+                //     dataRow[meetingWeekdayIndex],
+                //     dataRow[meetingStartTimeIndex],
+                //     dataRow[meetingEndTimeIndex],
+                //     dataRow[meetingTypeIndex],
+                // );
                 
-                console.log("My new Meeting...", meeting);
+                // console.log("My new Meeting...", meeting);
             }
 
             i++;
