@@ -27,8 +27,6 @@ function init() {
         // Print Column Headers Array
         console.log("columnHeaderList:", columnHeaderList);
 
-        let i = 0;
-
         let itemContainer = new Array();
 
         let rowItemParent = new Object();
@@ -61,8 +59,6 @@ function init() {
 
                 itemContainer.push(rowItem);
             }
-
-            i++;
         }
 
         console.log("itemContainer:", itemContainer);
@@ -71,7 +67,12 @@ function init() {
         const items = itemContainer;
 
         for(const item of items){
-            console.log("I am an Address", item.hasOwnProperty("locationAddress"));
+            // Get Addresses First
+            if (item.hasOwnProperty("locationAddress")) {
+                columnHeaderList.forEach((key) => {
+                   console.log(item[key])
+                });
+            }
         }
 
     }, function (reason) {
