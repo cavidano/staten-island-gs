@@ -67,17 +67,24 @@ function init() {
 
         const locations = new Array();
 
+        // Separate Locations
+        class Location {
+            constructor(
+                locationName,
+                locationAddress,
+            ) {
+                this.locationName = locationName;
+                this.locationAddress = locationAddress;
+            }
+        }
+
         for(const item of items){
 
             // Get Addresses First
             if (item.hasOwnProperty("locationAddress")) {
 
-                const newLocation = {};
-
-                newLocation["locationName"] = item.meetingName;
-                newLocation["locationAddress"] = item.locationAddress;
-
-                locations.push(newLocation);
+                let NewLocation = new Location(item.locationName, item.locationAddress);
+                locations.push(NewLocation);
             }
 
         }
@@ -85,7 +92,7 @@ function init() {
         console.log("locations =>", locations);
 
         var myJSON = JSON.stringify(locations);
-        console.log("myJSON =>", myJSON);
+        console.log(myJSON);
         
     }, function (reason) {
         console.log('Error: ' + reason.result.error.message);
