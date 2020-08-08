@@ -14,6 +14,8 @@ function init() {
         // Set Response as Variable
         const dataList = response.result.values;
 
+        console.log("My Raw Data...", dataList);
+
         // Create Columns Array
         let columnHeaderList = [];
 
@@ -63,13 +65,17 @@ function init() {
             i++;
         }
 
-        console.log("itemContainer:", itemContainer[0]);
+        console.log("itemContainer:", itemContainer);
+        console.log("itemContainer Item:", itemContainer[1].meetingName);
                      
         const items = itemContainer;
 
-        var myJSON = JSON.stringify(items);
+        for(const item of items){
+            console.log("I am an Address", item.hasOwnProperty("locationAddress"));
+        }
 
-        console.log(myJSON);
+        // var myJSON = JSON.stringify(items);
+        // console.log(myJSON);
 
     }, function (reason) {
         console.log('Error: ' + reason.result.error.message);
