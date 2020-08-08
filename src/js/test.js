@@ -74,9 +74,6 @@ function init() {
             console.log("I am an Address", item.hasOwnProperty("locationAddress"));
         }
 
-        // var myJSON = JSON.stringify(items);
-        // console.log(myJSON);
-
     }, function (reason) {
         console.log('Error: ' + reason.result.error.message);
     });
