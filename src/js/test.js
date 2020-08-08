@@ -61,20 +61,32 @@ function init() {
             }
         }
 
-        console.log("itemContainer:", itemContainer);
-        console.log("itemContainer Item:", itemContainer[1].meetingName);
+        console.log("itemContainer =>", itemContainer);
                      
         const items = itemContainer;
 
+        const locations = new Array();
+
         for(const item of items){
+
             // Get Addresses First
             if (item.hasOwnProperty("locationAddress")) {
-                columnHeaderList.forEach((key) => {
-                   console.log(item[key])
-                });
-            }
-        }
 
+                const newLocation = {};
+
+                newLocation["locationName"] = item.meetingName;
+                newLocation["locationAddress"] = item.locationAddress;
+
+                locations.push(newLocation);
+            }
+
+        }
+        
+        console.log("locations =>", locations);
+
+        var myJSON = JSON.stringify(locations);
+        console.log("myJSON =>", myJSON);
+        
     }, function (reason) {
         console.log('Error: ' + reason.result.error.message);
     });
