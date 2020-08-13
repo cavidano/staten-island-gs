@@ -24,31 +24,36 @@ In this file:
     --body-max-width: 2200px;
     --base-font-family: 'Montserrat', sans-serif;
 
-    --base-font-size: 22px;
+    --base-font-size: 20px;
 
     --base-font-weight-normal: 400;
     --base-font-weight-bold: 900;
 
     --primary: hsl(220, 70%, 40%);
-    --primary-link: var(primary);
+    --white-link: var(--primary);
 
     --secondary: hsl(174, 100%, 33%);
     --dark: hsl(215, 61%, 15%);
     --light: #F7F8F9;
 
     --border-radius: 0.375em;
+
+    --dropdown-z-index: 15000;
+
+    --modal-overlay-opacity: 0.8;
 }
 
 //////////////////////////////////////////////
 // C. Global Elements
 //////////////////////////////////////////////
 
-%serif{
+%serif {
     font-family:'EB Garamond', serif;
 }
 
-.background-blur{
-    backdrop-filter: blur(0.24rem) brightness(108%);
+.background-blur {
+    background-color: transparent;
+    backdrop-filter: blur(1rem) brightness(150%) saturate(75%);
     color: (var(--primary));
 }
 
@@ -67,15 +72,9 @@ p:not([class]) {
 //////////////////////////////////////////////
 
 #map-view{
-    --map-max-size: 350px;
+    --map-max-size: 325px;
     
     display: grid;
-
-    grid-template-areas: 
-        "map"
-        "sidebar";
-        
-    grid-template-rows: 1fr 0;
 
     #map-view__map-container {
         position: relative;
@@ -103,46 +102,56 @@ p:not([class]) {
         grid-area: 'sidebar';
 
         overflow-y: scroll;
+
+        display: none;
     }
 
-    #data-loader {
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: flex-end;
+    #map-view__data-container {
+        overflow-y: scroll;
     }
-    
-    @include breakpoints-up(lg) {
 
-        #map-view__data-container {
-            overflow-y: scroll;
-        }
-
-        grid-template-rows: unset !important;
-        
+    &.data-shown {
         grid-template-areas: 
             "map sidebar";
 
-        grid-template-columns: 1fr 0;
+        grid-template-columns: 1fr var(--map-max-size);
 
-        &.data-shown {
-            grid-template-columns: 1fr var(--map-max-size);
+        #map-view__data-container {
+            display: block;
         }
+    }
+}
+
+#data-loader{
+
+    p {
+        margin: unset;
+    }
+
+    .data__location {
+        padding: var(--s2);
+        font-size: var(--font-size-md);
 
     }
 
+    .data__meetings {
+        padding: var(--s2);
+        font-size: var(--font-size-sm);
+    }
+}
+
+.leaflet-tile{
+    filter: saturate(75%);
 }
 
 .leaflet-popup-tip,
 .leaflet-popup-content-wrapper {
     box-shadow: unset;
-    background-color: rgba( #ffffff, 0.5);
-    backdrop-filter: blur(0.24rem);
 }
 
 .leaflet-popup-content-wrapper {
     border-radius: calc( var(--border-radius) * 1) ;
     box-shadow: 0 0 1em rgba( #000000, 0.125);
-    
 }
 
 .leaflet-popup-content {
@@ -158,6 +167,10 @@ p:not([class]) {
 
     p {
         margin: unset;
+    }
+
+    p.meeting__count{
+        font-weight: 700;
     }
 }
 
@@ -253,7 +266,6 @@ a[class*="leaflet-control-zoom"]:focus {
 
 .leaflet-marker-icon,
 .meeting-detail {
-
     &:focus {
         outline: unset;
         outline-color: currentColor;
@@ -261,7 +273,6 @@ a[class*="leaflet-control-zoom"]:focus {
         outline-width: calc(var(--default-border-width) * 2);
         outline-offset: calc(var(--default-border-width) * -2);
     }
-
 }
 
 #map-loader { 

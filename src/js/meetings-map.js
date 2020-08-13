@@ -21,14 +21,14 @@ function setMapHeight() {
 setMapHeight();
 
 //////////////////////////////////////////////
-// B. Create Leaflet Map
+// B. Leaflet Map
 //////////////////////////////////////////////
 
 var map = L.map('map-loader', {
     center: [40.5795, -74.1502],
     setZoom: 14,
-    minZoom: 8,
-    maxZoom: 16,
+    minZoom: 10,
+    maxZoom: 17,
     scrollWheelZoom: false,
     attributionControl: false,
     zoomControl: false,
@@ -55,156 +55,238 @@ var siGeo = new L.GeoJSON.AJAX('./lib/geojson/statenIsland.geojson');
 
 siGeo.on('data:loaded', function() {
     centerMap(siGeo);
-    L.tileLayer.provider('CartoDB.VoyagerNoLabels').addTo(map);
+
+    let mapFrank = 'ckdrl3agu02vu19n5o868p9pq';
+    let mapClassic = 'ckdra9cus0rv11aqo0iawtcou'
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{user}/{id}/tiles/{tileSize}/{z}/{x}/{y}?access_token={accessToken}', {
+        user: 'cavidano',
+        id: mapClassic,
+        accessToken: 'pk.eyJ1IjoiY2F2aWRhbm8iLCJhIjoiY2tkY3ZzdHUyMTB3azJ6b2JtbTNhODkybSJ9.zor-mM9NBBaRSuJKhwPh7g',
+        tileSize: 256
+    }).addTo(map);
+    
 });
 
 function centerMap(myBounds){
-    map.fitBounds(myBounds.getBounds(), { padding: [20, 20] });
+    map.fitBounds(myBounds.getBounds());
 }
 
 // Custom popup options
 
-var markerOptions = {
-    riseOnHover: true,
-    icon: Icon
-};
-
-var openMeeting = new Icon( { iconUrl: myPath + '/images/map-pin-open.svg'} );
-var closedMeeting = new Icon( { iconUrl: myPath + '/images/map-pin-closed.svg'} );
+var meetingIconSingle = new Icon( { iconUrl: myPath + '/images/map-pin-single.svg' });
+var meetingIconMultiple = new Icon({ iconUrl: myPath + '/images/map-pin-multiple.svg' });
 
 // Create Markers
 
-markerLayer = L.layerGroup([]).addTo(map);
+var markerLayer = L.layerGroup([]).addTo(map);
 
-function createMarker(
-    coords, 
-    meetingType,
-    meetingTitle,
-    meetingAddress
-) {
+//////////////////////////////////////////////
+// A. Get Spreadsheet Data
+//////////////////////////////////////////////
 
-    var meeting;
+function init() {
+    gapi.client.init({
+        'apiKey': 'AIzaSyAa12ysdSNieKzVAb_jsAy_pV6gH9phlOs',
+    }).then(function () {
+        return gapi.client.request({
+            'path': 'https://sheets.googleapis.com/v4/spreadsheets/18q9JqQbP_d8_27c9yePyixkhFsUAiJ9yOlkhTmfu-v4/values/sigsMeetingListv2',
+        })
+    }).then(function (response) {
 
-    if( meetingType === closedMeeting ){
-        meeting = 'Closed';
-    } else if ( meetingType === openMeeting ) {
-        meeting = 'Open';
-    }
+        // Set Response as Variable
+        const dataList = response.result.values;
 
-    var contentPopUp = '<a href="#1" class="text-primary"><strong>' + meetingTitle + '</strong></a>' + 
-                       '<p class="meeting__address">' + meetingAddress + '</p>';
+        console.log("My Raw Data...", dataList);
 
-    var contentSidebar = '<p class="meeting__title">' + meetingTitle + '</p>' +
-                         '<p class="meeting__type">' + meeting + ' Discussion' + '</p>' +
-                         '<p class="meeting__address">' + meetingAddress + '</p>';
-    
-    var marker = L.marker(coords, { icon: meetingType }).addTo(markerLayer);
-    
-    marker.bindPopup(contentPopUp);
+        // Create Columns Array
+        let columnHeaderList = [];
 
-    // Desktop Marker Functionality
+        // Create Column Headers Array
+        for (const columnHeader of dataList[0]) {
+            columnHeaderList.push(columnHeader);
+        }
 
-    var mediaQuery = window.matchMedia('( max-width: 1000px )');
+        var itemsContainer = [""];
+        
+        var i = 0;
 
-    function watchMediaQuery(event) {
+        // Print Data Rows
+        dataList.forEach((dataRow) => {
+        
+            // Get All Rows Excluding Column Headers
+            if (dataRow[0] !== columnHeaderList[0]) {
 
-        if (event.matches) {
-            return;
-        } else {
+                let rowItem = dataRow;
 
-            marker.on('click', function (event) {
+                for (const [index, dataCell] of rowItem.entries()) {
 
-                if (sidebarShown === false) {
-                    mapTarget.classList.add('data-shown');
-                    sidebarShown = true;
-                    map.invalidateSize(true);
+                    if (dataCell !== "") {
+                        rowItem[index] = dataCell;
+                    } else {
+                        if (itemsContainer.length > 1) {
+                            rowItem[index] = itemsContainer[i-1][index]
+                        }
+                    }
                 }
 
-                var id = L.Util.stamp(event.target);
+                itemsContainer.push(rowItem);
 
-                if (document.getElementById(id) != null) return;
+            } // end 
 
-                var dataLoader = L.DomUtil.create('div', 'dataLoader', document.getElementById('data-loader'));
+            i++;
 
-                dataLoader.id = id;
-                
-                var meetingDetail = L.DomUtil.create('div', 'meeting-detail' + ' ' + meeting.toLowerCase() + ' ' + 'border-bottom', dataLoader);
-                meetingDetail.innerHTML = contentSidebar;
-                
-                meetingDetail.setAttribute("tabindex", 0);
+        });
 
-                meetingDetail.setAttribute("data-highlight", "true");
+        var itemsContainer = itemsContainer.filter(function (el) {
+            return el != "";
+        });
 
-                setTimeout( function() {
-                    meetingDetail.setAttribute("data-highlight", "false");
-                }, 2000)
-                
-                L.DomEvent.on( meetingDetail, 'click', function (event) {
+        console.log("itemsContainer ==> ", itemsContainer);
 
-                    if( event.target.classList.contains('btn')) {
-                        event.preventDefault();
-                    } else {
-                        var marker = markerLayer.getLayer(this.id);
-                        marker.closePopup();
-                        map.panTo(marker.getLatLng());
-                        marker.bounce(2);
-                    }
+        var locationsList = [];
 
-                }, dataLoader);
-                
-                var unpinMeeting = L.DomUtil.create('button', 'btn btn--icon-only', meetingDetail);
-                
-                unpinMeeting.innerHTML = '<span class="screen-reader-only">Remove</span>' +
-                                         '<span class="fas fa-times btn__icon"></span>';
-
-                unpinMeeting.setAttribute("title", "Remove");
-                
-                L.DomEvent.on(unpinMeeting, 'click', function () {
-                    markerLayer.getLayer(this.id).closePopup();
-                    this.parentNode.removeChild(this);
-                }, dataLoader);
-            });
+        for (const [index, item] of itemsContainer.entries()) {
+            locationsList.push(item[0]);
         }
-    }
 
-    watchMediaQuery(mediaQuery);
-    mediaQuery.addListener(watchMediaQuery);
-}
+        locations = Array.from(new Set(locationsList));
+        
+        console.log("locations ==> ", locations);
 
-createMarker(
-    [40.641310, -74.075930],
-    openMeeting, 
-    "The Crossroads",
-    "26 Bay St,<br>Staten Island, NY 10301"
-);
+        // Map it
 
-createMarker(
-    [40.628910, -74.114570],
-    closedMeeting, 
-    "Carl's House",
-    "471 Broadway,<br>Staten Island, NY 10301"
-);
+        for (const [index, location] of locations.entries()) {
 
-createMarker(
-    [40.632000, -74.132060],
-    closedMeeting, 
-    "Jaywalker Club",
-    "945 Post Ave,<br>Staten Island, NY 10302"
-);
+            console.log("location ==> ", index, location);
 
-createMarker(
-    [40.639150, -74.076800],
-    openMeeting, 
-    "Project Hospitality Cafe",
-    "100 Central Ave,<br>Staten Island, NY 10301"
-);
+            let locationAddress = location;
 
-createMarker(
-    [40.533780, -74.189230],
-    openMeeting, 
-    "Steps to the Stars",
-    "5371 Amboy Rd,<br>Staten Island, NY 10312"
-);
+            let locationMeetings = itemsContainer.filter(item => item.includes(location));
+
+            let locationName = locationMeetings[0][1];
+
+            console.log("locationName ==> ", index, locationName);
+
+            console.log("locationMeetings ==> ", index, locationMeetings);
+
+
+
+            // location meetings
+
+            var coords, marker;
+
+            L.esri.Geocoding.geocode().address(locationAddress).run((err, results) => {
+
+                if (err) {
+                    return;
+                } else {
+                    coords = results.results[0].latlng;
+                }
+
+                if (locationMeetings.length > 1) {
+                    var meetingCountLabel = "Meetings";
+                    meetingIcon = meetingIconMultiple;
+                } else {
+                    var meetingCountLabel = "Meeting";
+                    meetingIcon = meetingIconSingle;
+                }
+
+                marker = L.marker(coords, {
+                    icon: meetingIcon,
+                    riseOnHover: true
+                }).addTo(map);
+
+                let address1 = locationAddress.split(/,(.+)/)[0];
+                let address2 = locationAddress.split(/,(.+)/)[1];
+
+                var contentPopUp = 
+                   `<a href="#1" class="text-primary">
+                        <strong>${locationName}</strong>
+                    </a>
+                    <p class="meeting__address">
+                        ${address1}<br>
+                        ${address2}
+                    </p>
+                    <p class="meeting__count">
+                        ${locationMeetings.length} ${meetingCountLabel}
+                    </p>`;
+
+                var contentSidebar = 
+                   `<div class="data__location">
+                        <p class="meeting__title">
+                            <strong>${locationName}</strong>
+                        </p>
+                        <p class="meeting__address margin-bottom-1">
+                            ${address1}<br>
+                            ${address2}
+                        </p>
+                        <a class="btn btn--has-icon background-light text-primary rounded font-size-sm" href="http://maps.google.com/?q=${locationAddress}" target="_blank">
+                            <span class="fas fa-directions fa-lg btn__icon"></span>
+                            <span class="btn__text">Directions</span>
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="data__meetings">
+                        <ul class="nav">
+                            ${locationMeetings.map(element =>
+                           `<li>
+                                <span class="display-block">
+                                    <strong>${element[3]}</strong>
+                                </span> 
+                                <span class="display-block"><a class="text-primary" href="#1">${element[2]}</a></span>
+                                <span class="display-block margin-left-2">${element[4]} - ${element[5]}</span>
+                                <span class="display-block margin-left-2">${element[6]}</span>   
+                            </li>`).join('')}
+                        </ul>
+                    </div>`;
+                                      
+                marker.bindPopup(contentPopUp);
+
+                //////////////////////////////////////////////
+                // A. Desktop Marker Action
+                //////////////////////////////////////////////
+
+                var mediaQuery = window.matchMedia('( max-width: 1000px )');
+
+                function watchMediaQuery(event) {
+
+                    if (event.matches) {
+                        return;
+                    } else {
+
+                        var dataLoader = document.getElementById('data-loader');
+
+                        marker.on('click', function (event) {
+
+                            if (sidebarShown === false) {
+                                mapTarget.classList.add('data-shown');
+                                sidebarShown = true;
+                                map.invalidateSize(true);
+                            }
+
+                            dataLoader.innerHTML = contentSidebar;
+
+                        });
+                    }
+                }
+
+                watchMediaQuery(mediaQuery);
+                mediaQuery.addListener(watchMediaQuery);
+
+            });
+
+        }
+
+        const myJSON = JSON.stringify(itemsContainer);
+        console.log("JSON ==> ", myJSON);
+
+    }, function (reason) {
+        console.log('Error: ' + reason.result.error.message);
+    });
+};
+
+gapi.load('client', init);
 
 window.addEventListener('resize', setMapHeight);
 
@@ -217,6 +299,7 @@ const zoomOutButton = document.querySelector('[data-map-zoom-out]');
 const toggleLocationButton = document.querySelector('[data-toggle-locations]');
 
 map.on("zoomend", function () {
+
     let currentZoom = map.getZoom();
     let maxZoom = map.options.maxZoom;
     let minZoom = map.options.minZoom;
