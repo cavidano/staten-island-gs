@@ -26,10 +26,8 @@ function init() {
 
         var itemsContainer = [""];
 
-        var i = 0;
-
         // Print Data Rows
-        dataList.forEach((dataRow) => {
+        dataList.forEach((dataRow, i) => {
 
             // Get All Rows Excluding Column Headers
             if (dataRow[0] !== columnHeaderList[0]) {
@@ -50,8 +48,6 @@ function init() {
                 itemsContainer.push(rowItem);
 
             } // end 
-
-            i++;
 
         });
 
