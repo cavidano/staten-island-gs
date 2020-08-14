@@ -25,6 +25,7 @@ function init() {
         }
 
         var itemsContainer = [""];
+        var itemsAsObjects = [];
 
         // Print Data Rows
         dataList.forEach((dataRow, i) => {
@@ -47,7 +48,6 @@ function init() {
 
                 itemsContainer.push(rowItem);
 
-
             } // end for
 
         });
@@ -59,31 +59,26 @@ function init() {
         
         console.log("itemsContainer ==> ", itemsContainer);
 
-        // var objectContainer = []
+        itemsContainer.forEach((rowItem) => {
 
-        // itemsContainer.forEach((rowObject, i) => {
+            let rowObject = {}
+            let keys = columnHeaderList;
+            let values = rowItem;
 
-        //     // Makw Master Object
+            keys.forEach((key, i) => {
+                rowObject[key] = values[i];
+            });
 
-        //     let keys = columnHeaderList;
-        //     let values = itemsContainer[0];
+            rowItem = rowObject;
+            // console.log("row item .......... ", rowItem);
 
-        //     keys.forEach(function (key, i){
-        //         rowItem[key] = values[i];
-        //     });
-            
-        //     objectContainer.push(rowObject);
+            itemsAsObjects.push(rowObject);
 
-        //     console.log("Result..................... ", rowObject);
-        //     console.log("objectContainer ==> ", objectContainer);
-        // });
+        });
 
+        console.log("itemsAsObjects ==> ", itemsAsObjects);
 
-
-        
-
-
-        const myJSON = JSON.stringify(itemsContainer);
+        const myJSON = JSON.stringify(itemsAsObjects);
         console.log("JSON ==> ", myJSON);
 
     }, function (reason) {
