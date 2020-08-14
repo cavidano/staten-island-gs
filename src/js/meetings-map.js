@@ -117,7 +117,7 @@ function init() {
             // Get All Rows Excluding Column Headers
             if (dataRow[0] !== columnHeaderList[0]) {
 
-                let rowItem = dataRow;
+                let rowItem = Array.from(dataRow);
 
                 for (const [index, dataCell] of rowItem.entries()) {
 
@@ -138,6 +138,7 @@ function init() {
 
         });
 
+        // Remove Empty Placeholder in itemsContainer
         var itemsContainer = itemsContainer.filter(function (el) {
             return el != "";
         });
@@ -152,7 +153,16 @@ function init() {
 
         locations = Array.from(new Set(locationsList));
         
+        var weekdaysList = [];
+
+        for (const [index, item] of itemsContainer.entries()) {
+            weekdaysList.push(item[3]);
+        }
+
+        weekdays = Array.from(new Set(weekdaysList));
+
         console.log("locations ==> ", locations);
+        console.log("weekdays ==> ", weekdays);
 
         // Map it
 
@@ -164,13 +174,15 @@ function init() {
 
             let locationMeetings = itemsContainer.filter(item => item.includes(location));
 
+            // let new_array = locationMeetings.map(function({
+            //     // return element for new_array
+            // });
+
             let locationName = locationMeetings[0][1];
 
             console.log("locationName ==> ", index, locationName);
 
-            console.log("locationMeetings ==> ", index, locationMeetings);
-
-
+            console.log("locationMeetings ==> ", locationMeetings);
 
             // location meetings
 
@@ -199,6 +211,13 @@ function init() {
 
                 let address1 = locationAddress.split(/,(.+)/)[0];
                 let address2 = locationAddress.split(/,(.+)/)[1];
+
+                const pets = {
+                    cat1: 'Jack',
+                    cat2: 'Trico',
+                    cat3: 'Lydia',
+                    dog: 'Zero'
+                }
 
                 var contentPopUp = 
                    `<a href="#1" class="text-primary">
@@ -229,17 +248,28 @@ function init() {
                     <hr>
                     <div class="data__meetings">
                         <ul class="nav">
-                            ${locationMeetings.map(element =>
-                           `<li>
-                                <span class="display-block">
-                                    <strong>${element[3]}</strong>
-                                </span> 
-                                <span class="display-block"><a class="text-primary" href="#1">${element[2]}</a></span>
-                                <span class="display-block margin-left-2">${element[4]} - ${element[5]}</span>
-                                <span class="display-block margin-left-2">${element[6]}</span>   
-                            </li>`).join('')}
+                            ${locationMeetings.map(initLocationMeetings).join('')}
                         </ul>
                     </div>`;
+
+                    function initLocationMeetings(element) {
+
+                        let weekDay = element[3];
+                        let meetingName = element[2];
+                        let meetingStartTime = element[4];
+                        let meetingEndTime = element[5];
+                        let meetingType = element[6];
+
+                        return `
+                        <li>
+                            <span class="display-block">
+                                <strong>${weekDay}</strong>
+                            </span> 
+                            <span class="display-block"><a class="text-primary" href="#1">${meetingName}</a></span>
+                            <span class="display-block margin-left-2">${meetingStartTime} - ${meetingEndTime}</span>
+                            <span class="display-block margin-left-2">${meetingType}</span>   
+                        </li>`                        
+                    }
                                       
                 marker.bindPopup(contentPopUp);
 
