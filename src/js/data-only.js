@@ -47,7 +47,8 @@ function init() {
 
                 itemsContainer.push(rowItem);
 
-            } // end 
+
+            } // end for
 
         });
 
@@ -55,8 +56,32 @@ function init() {
         var itemsContainer = itemsContainer.filter(function (el) {
             return el != "";
         });
-
+        
         console.log("itemsContainer ==> ", itemsContainer);
+
+        // var objectContainer = []
+
+        // itemsContainer.forEach((rowObject, i) => {
+
+        //     // Makw Master Object
+
+        //     let keys = columnHeaderList;
+        //     let values = itemsContainer[0];
+
+        //     keys.forEach(function (key, i){
+        //         rowItem[key] = values[i];
+        //     });
+            
+        //     objectContainer.push(rowObject);
+
+        //     console.log("Result..................... ", rowObject);
+        //     console.log("objectContainer ==> ", objectContainer);
+        // });
+
+
+
+        
+
 
         const myJSON = JSON.stringify(itemsContainer);
         console.log("JSON ==> ", myJSON);
