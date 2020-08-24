@@ -71,12 +71,11 @@ p:not([class]) {
 // D. Map
 //////////////////////////////////////////////
 
+
 #map-view{
     --map-max-size: 325px;
     
-    display: grid;
-
-    #map-view__map-container {
+    #map-view__map {
         position: relative;
         z-index: 8000;
 
@@ -111,10 +110,6 @@ p:not([class]) {
     }
 
     &.data-shown {
-        grid-template-areas: 
-            "map sidebar";
-
-        grid-template-columns: 1fr var(--map-max-size);
 
         #map-view__data-container {
             display: block;

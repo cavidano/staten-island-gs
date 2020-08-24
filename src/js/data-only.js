@@ -68,10 +68,7 @@ function init() {
             keys.forEach((key, i) => {
                 rowObject[key] = values[i];
             });
-
-            rowItem = rowObject;
-            // console.log("row item .......... ", rowItem);
-
+            
             itemsAsObjects.push(rowObject);
 
         });
